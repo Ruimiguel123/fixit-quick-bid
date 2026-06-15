@@ -91,9 +91,6 @@ function Header({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; 
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-6">
         <a href="#top" className="flex items-center gap-2">
           <Logo />
-          <span className="font-display text-base font-extrabold tracking-tight md:text-lg">
-            DigitalExpert<span className="text-brand">.ca</span>
-          </span>
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex">
