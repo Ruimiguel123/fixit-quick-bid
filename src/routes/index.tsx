@@ -4,7 +4,7 @@ import {
   Phone, MapPin, Clock, Mail, Facebook, Check, ChevronDown,
   Star, Smartphone, Battery, Wrench, Camera, Unlock, ArrowRight,
 } from "lucide-react";
-import { translations, type Lang } from "@/lib/i18n";
+import { translations, type Lang, type Dict } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -71,7 +71,7 @@ function Page() {
 }
 
 /* ---------- Header ---------- */
-function Header({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; t: typeof translations.fr }) {
+function Header({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; t: Dict }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -148,7 +148,7 @@ function Logo() {
 }
 
 /* ---------- Hero ---------- */
-function Hero({ t }: { t: typeof translations.fr }) {
+function Hero({ t }: { t: Dict }) {
   return (
     <section id="top" className="relative overflow-hidden bg-background">
       <div className="absolute inset-0 cube-cascade opacity-40" aria-hidden />
@@ -199,7 +199,7 @@ function Hero({ t }: { t: typeof translations.fr }) {
   );
 }
 
-function RepairTicket({ t, hero = false }: { t: typeof translations.fr; hero?: boolean }) {
+function RepairTicket({ t, hero = false }: { t: Dict; hero?: boolean }) {
   return (
     <div className={`relative w-full max-w-sm ${hero ? "ticket-float" : ""}`}>
       <div className="relative rounded-md bg-card shadow-2xl shadow-black/15 ring-1 ring-black/5">
@@ -257,7 +257,7 @@ function BrandsStrip({ label }: { label: string }) {
 /* ---------- Services ---------- */
 const SERVICE_ICONS = [Smartphone, Battery, Wrench, Camera, Unlock];
 
-function Services({ t }: { t: typeof translations.fr }) {
+function Services({ t }: { t: Dict }) {
   return (
     <section id="services" className="bg-paper py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
@@ -321,7 +321,7 @@ function Services({ t }: { t: typeof translations.fr }) {
 }
 
 /* ---------- How It Works ---------- */
-function HowItWorks({ t }: { t: typeof translations.fr }) {
+function HowItWorks({ t }: { t: Dict }) {
   return (
     <section id="how" className="relative bg-graphite py-16 text-graphite-foreground md:py-24">
       <div className="absolute inset-0 cube-pattern" aria-hidden />
@@ -344,7 +344,7 @@ function HowItWorks({ t }: { t: typeof translations.fr }) {
 }
 
 /* ---------- About ---------- */
-function About({ t }: { t: typeof translations.fr }) {
+function About({ t }: { t: Dict }) {
   return (
     <section id="about" className="bg-background py-16 md:py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 md:px-6 lg:grid-cols-2 lg:items-center">
@@ -379,7 +379,7 @@ function About({ t }: { t: typeof translations.fr }) {
 }
 
 /* ---------- Reviews ---------- */
-function Reviews({ t }: { t: typeof translations.fr }) {
+function Reviews({ t }: { t: Dict }) {
   return (
     <section id="reviews" className="bg-paper py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
@@ -410,7 +410,7 @@ function Reviews({ t }: { t: typeof translations.fr }) {
 }
 
 /* ---------- FAQ ---------- */
-function Faq({ t }: { t: typeof translations.fr }) {
+function Faq({ t }: { t: Dict }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section id="faq" className="bg-background py-16 md:py-24">
@@ -451,7 +451,7 @@ function Faq({ t }: { t: typeof translations.fr }) {
 }
 
 /* ---------- Request Form ---------- */
-function RequestForm({ t }: { t: typeof translations.fr }) {
+function RequestForm({ t }: { t: Dict }) {
   const [sent, setSent] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -550,7 +550,7 @@ function Field({
 }
 
 /* ---------- Contact ---------- */
-function Contact({ t }: { t: typeof translations.fr }) {
+function Contact({ t }: { t: Dict }) {
   return (
     <section id="contact" className="bg-background py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
@@ -613,7 +613,7 @@ function InfoBlock({ icon, label, children }: { icon: React.ReactNode; label: st
 }
 
 /* ---------- Footer ---------- */
-function Footer({ t }: { t: typeof translations.fr }) {
+function Footer({ t }: { t: Dict }) {
   return (
     <footer className="bg-graphite py-10 text-graphite-foreground">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 md:flex-row md:items-center md:justify-between md:px-6">
