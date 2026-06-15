@@ -301,4 +301,4 @@ export const translations: Record<Lang, Dict> = {
     },
     mobileBar: "Call now — 819-300-1718",
   },
-} as const;
+};
