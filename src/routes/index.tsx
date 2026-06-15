@@ -134,15 +134,16 @@ function Header({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; 
 
 function Logo() {
   return (
-    <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden>
-      <rect x="2" y="2" width="8" height="8" fill="#0ca300" />
-      <rect x="12" y="2" width="8" height="8" fill="#848484" />
-      <rect x="22" y="2" width="8" height="8" fill="#0ca300" />
-      <rect x="2" y="12" width="8" height="8" fill="#848484" />
-      <rect x="12" y="12" width="8" height="8" fill="#0ca300" />
-      <rect x="22" y="22" width="8" height="8" fill="#0ca300" />
-      <rect x="12" y="22" width="8" height="8" fill="#848484" />
-    </svg>
+    <div className="flex h-9 w-auto items-center justify-center rounded-md bg-white px-1.5 py-1">
+      <img
+        src={logoAsset.url}
+        alt="DigitalExpert.ca"
+        className="h-full w-auto object-contain"
+        width={120}
+        height={36}
+        loading="eager"
+      />
+    </div>
   );
 }
 
