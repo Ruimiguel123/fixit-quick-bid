@@ -1,6 +1,22 @@
 export type Lang = "fr" | "en";
 
-export const translations = {
+export interface Dict {
+  nav: { services: string; how: string; about: string; reviews: string; faq: string; contact: string; request: string; call: string };
+  hero: { eyebrow: string; title1: string; title2: string; subtitle: string; callBtn: string; seeServices: string; trust: string[] };
+  ticket: { header: string; number: string; device: string; deviceVal: string; issue: string; issueVal: string; dropoff: string; dropoffVal: string; ready: string; readyVal: string; warranty: string; warrantyVal: string; price: string; stamp: string };
+  brands: string;
+  services: { title: string; kicker: string; list: { n: string; name: string; desc: string; price: string }[] };
+  how: { title: string; steps: { n: string; t: string; d: string }[] };
+  about: { title: string; p1: string; p2: string; stats: { v: string; l: string }[]; photoAlt: string };
+  reviews: { title: string; list: { q: string; a: string }[] };
+  faq: { title: string; items: { q: string; a: string }[] };
+  form: { title: string; kicker: string; name: string; phone: string; device: string; problem: string; photo: string; submit: string; sent: string; required: string };
+  contact: { title: string; addressLabel: string; phoneLabel: string; hoursLabel: string; emailLabel: string; hours: { d: string; h: string }[] };
+  footer: { tagline: string; rights: string; facebook: string };
+  mobileBar: string;
+}
+
+export const translations: Record<Lang, Dict> = {
   fr: {
     nav: {
       services: "Services",
