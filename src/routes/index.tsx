@@ -138,6 +138,7 @@ function Logo() {
       src={logoAsset.url}
       alt="DigitalExpert.ca"
       className="h-14 w-auto object-contain md:h-20"
+      style={{ filter: "drop-shadow(0 0 3px rgba(255,255,255,0.85))" }}
       width={360}
       height={80}
       loading="eager"
