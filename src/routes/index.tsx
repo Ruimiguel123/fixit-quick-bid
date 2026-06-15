@@ -5,7 +5,7 @@ import {
   Star, Smartphone, Battery, Wrench, Camera, Unlock, ArrowRight,
 } from "lucide-react";
 import { translations, type Lang, type Dict } from "@/lib/i18n";
-import logoAsset from "@/assets/digitalexpert-logo-v2.png.asset.json";
+import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
