@@ -88,8 +88,8 @@ function Header({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; 
         scrolled ? "shadow-lg shadow-black/20" : ""
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-6">
-        <a href="#top" className="flex items-center gap-2">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2 md:px-6">
+        <a href="#top" className="flex items-center">
           <Logo />
         </a>
 
