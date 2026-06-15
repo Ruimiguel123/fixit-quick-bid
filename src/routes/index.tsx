@@ -5,7 +5,7 @@ import {
   Star, Smartphone, Battery, Wrench, Camera, Unlock, ArrowRight,
 } from "lucide-react";
 import { translations, type Lang, type Dict } from "@/lib/i18n";
-import logoAsset from "@/assets/digitalexpert-logo.png.asset.json";
+import logoAsset from "@/assets/digitalexpert-logo-cropped.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -88,8 +88,8 @@ function Header({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; 
         scrolled ? "shadow-lg shadow-black/20" : ""
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-6">
-        <a href="#top" className="flex items-center gap-2">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2 md:px-6">
+        <a href="#top" className="flex items-center">
           <Logo />
         </a>
 
@@ -134,16 +134,14 @@ function Header({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; 
 
 function Logo() {
   return (
-    <div className="flex h-10 w-auto items-center justify-center rounded-lg bg-white px-2 py-1.5">
-      <img
-        src={logoAsset.url}
-        alt="DigitalExpert.ca"
-        className="h-full w-auto object-contain"
-        width={140}
-        height={40}
-        loading="eager"
-      />
-    </div>
+    <img
+      src={logoAsset.url}
+      alt="DigitalExpert.ca"
+      className="h-14 w-auto object-contain md:h-20"
+      width={360}
+      height={80}
+      loading="eager"
+    />
   );
 }
 
