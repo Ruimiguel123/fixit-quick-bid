@@ -109,6 +109,15 @@ function Header({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; 
         </nav>
 
         <div className="flex items-center gap-2 md:gap-3">
+          <a
+            href="https://www.facebook.com/digitalexpert.ca"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+            className="rounded-md border border-white/15 p-2 text-graphite-foreground/80 hover:border-brand hover:text-brand transition-colors"
+          >
+            <Facebook size={18} />
+          </a>
           <button
             onClick={() => setLang(lang === "fr" ? "en" : "fr")}
             className="rounded-md border border-white/15 px-2 py-1.5 font-mono text-xs uppercase tracking-wider text-graphite-foreground/90 hover:border-brand hover:text-brand transition-colors"
@@ -631,7 +640,7 @@ function Footer({ t }: { t: Dict }) {
             <Phone size={14} /> {PHONE}
           </a>
           <a
-            href="https://www.facebook.com/"
+            href="https://www.facebook.com/digitalexpert.ca"
             target="_blank"
             rel="noopener"
             className="inline-flex items-center gap-2 hover:text-brand"
