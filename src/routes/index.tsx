@@ -5,6 +5,8 @@ import {
   Star, Smartphone, Battery, Wrench, Camera, Unlock, ArrowRight,
 } from "lucide-react";
 import { translations, type Lang, type Dict } from "@/lib/i18n";
+import logoAsset from "@/assets/digitalexpert-logo.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -89,9 +91,6 @@ function Header({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; 
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-6">
         <a href="#top" className="flex items-center gap-2">
           <Logo />
-          <span className="font-display text-base font-extrabold tracking-tight md:text-lg">
-            DigitalExpert<span className="text-brand">.ca</span>
-          </span>
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex">
@@ -135,15 +134,16 @@ function Header({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; 
 
 function Logo() {
   return (
-    <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden>
-      <rect x="2" y="2" width="8" height="8" fill="#0ca300" />
-      <rect x="12" y="2" width="8" height="8" fill="#848484" />
-      <rect x="22" y="2" width="8" height="8" fill="#0ca300" />
-      <rect x="2" y="12" width="8" height="8" fill="#848484" />
-      <rect x="12" y="12" width="8" height="8" fill="#0ca300" />
-      <rect x="22" y="22" width="8" height="8" fill="#0ca300" />
-      <rect x="12" y="22" width="8" height="8" fill="#848484" />
-    </svg>
+    <div className="flex h-10 w-auto items-center justify-center rounded-lg bg-white px-2 py-1.5">
+      <img
+        src={logoAsset.url}
+        alt="DigitalExpert.ca"
+        className="h-full w-auto object-contain"
+        width={140}
+        height={40}
+        loading="eager"
+      />
+    </div>
   );
 }
 
