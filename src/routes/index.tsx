@@ -137,9 +137,9 @@ function Logo() {
     <img
       src={logoAsset.url}
       alt="DigitalExpert.ca"
-      className="h-11 w-auto object-contain md:h-14"
-      width={300}
-      height={56}
+      className="h-14 w-auto object-contain md:h-20"
+      width={360}
+      height={80}
       loading="eager"
     />
   );
