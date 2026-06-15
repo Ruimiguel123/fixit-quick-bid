@@ -5,7 +5,7 @@ import {
   Star, Smartphone, Battery, Wrench, Camera, Unlock, ArrowRight,
 } from "lucide-react";
 import { translations, type Lang, type Dict } from "@/lib/i18n";
-import logoAsset from "@/assets/digitalexpert-logo-cropped.png.asset.json";
+import logoAsset from "@/assets/digitalexpert-logo-transparent.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -138,6 +138,7 @@ function Logo() {
       src={logoAsset.url}
       alt="DigitalExpert.ca"
       className="h-14 w-auto object-contain md:h-20"
+      style={{ filter: "drop-shadow(0 0 3px rgba(255,255,255,0.85))" }}
       width={360}
       height={80}
       loading="eager"
