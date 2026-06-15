@@ -134,16 +134,14 @@ function Header({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => void; 
 
 function Logo() {
   return (
-    <div className="flex h-10 w-auto items-center justify-center rounded-lg bg-white px-2 py-1.5">
-      <img
-        src={logoAsset.url}
-        alt="DigitalExpert.ca"
-        className="h-full w-auto object-contain"
-        width={140}
-        height={40}
-        loading="eager"
-      />
-    </div>
+    <img
+      src={logoAsset.url}
+      alt="DigitalExpert.ca"
+      className="h-11 w-auto object-contain md:h-14"
+      width={300}
+      height={56}
+      loading="eager"
+    />
   );
 }
 
