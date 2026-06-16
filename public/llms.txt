@@ -1,0 +1,13 @@
+# DigitalExpert.ca
+
+> Mobile phone, tablet, and computer repair shop in Sherbrooke, Quebec. Fast, reliable repairs with quality parts and a warranty you can trust.
+
+DigitalExpert.ca is a local electronics repair business based in Sherbrooke, QC. We specialize in repairing smartphones (iPhone, Samsung, Google Pixel, and more), tablets, laptops, and desktop computers. Our services include screen replacement, battery replacement, charging port repair, water damage repair, data recovery, and software troubleshooting. We serve customers in Sherbrooke and the surrounding Eastern Townships region.
+
+## Pages
+
+- [Home](/): Our main landing page with services overview, about section, FAQs, and contact information.
+
+## Optional
+
+- [Privacy Policy](/privacy): Information about how we handle customer data and privacy.
