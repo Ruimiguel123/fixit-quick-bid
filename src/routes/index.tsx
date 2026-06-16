@@ -11,7 +11,7 @@ import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Réparation cellulaire Sherbrooke — DigitalExpert.ca | Écrans, batteries, garantie 90 jours" },
+      { title: "Réparation cellulaire Sherbrooke — DigitalExpert.ca" },
       { name: "description", content: "Réparation de cellulaire à Sherbrooke depuis 2016. Écrans iPhone dès 109 $, batteries dès 79 $. Diagnostic gratuit, garantie écrite 90 jours. 819-300-1718." },
       { property: "og:title", content: "DigitalExpert.ca — Réparation cellulaire Sherbrooke" },
       { property: "og:description", content: "Écrans, batteries, déverrouillage. Diagnostic gratuit, garantie 90 jours. Le jour même." },
