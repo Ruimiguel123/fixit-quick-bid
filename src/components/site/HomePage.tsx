@@ -7,6 +7,8 @@ import {
 import { translations, type Lang, type Dict } from "@/lib/i18n";
 import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
 import { SERVICES, SERVICE_ORDER } from "@/lib/services-data";
+import samsungRepairAsset from "@/assets/samsung-screen-repair.jpg.asset.json";
+import iphoneRepairAsset from "@/assets/iphone-screen-repair.jpg.asset.json";
 
 const PHONE = "819-300-1718";
 const TEL = "tel:+18193001718";
@@ -46,6 +48,7 @@ export function HomePage({ lang }: { lang: Lang }) {
         <Services t={t} lang={lang} />
         <HowItWorks t={t} />
         <About t={t} />
+        <RepairExamples lang={lang} />
         <Reviews t={t} />
         <Faq t={t} />
         <RequestForm t={t} lang={lang} />
@@ -363,6 +366,52 @@ function HowItWorks({ t }: { t: Dict }) {
               <h3 className="mt-5 font-display text-xl font-extrabold">{s.t}</h3>
               <p className="mt-2 text-sm text-graphite-foreground/70">{s.d}</p>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Repair Examples ---------- */
+function RepairExamples({ lang }: { lang: Lang }) {
+  const fr = lang === "fr";
+  const items = [
+    {
+      src: iphoneRepairAsset.url,
+      alt: fr ? "Écran iPhone avant/après réparation" : "iPhone screen before/after repair",
+      title: fr ? "Écran iPhone — Avant / Après" : "iPhone screen — Before / After",
+      sub: fr ? "Lignes vertes corrigées, affichage parfait" : "Green lines fixed, perfect display",
+    },
+    {
+      src: samsungRepairAsset.url,
+      alt: fr ? "Écran Samsung Galaxy avant/après réparation" : "Samsung Galaxy screen before/after repair",
+      title: fr ? "Samsung Galaxy — Avant / Après" : "Samsung Galaxy — Before / After",
+      sub: fr ? "Vitre fissurée remplacée, comme neuf" : "Cracked glass replaced, like new",
+    },
+  ];
+  return (
+    <section id="examples" className="bg-paper py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
+        <div className="reveal flex items-end justify-between gap-4">
+          <h2 className="font-display text-3xl font-extrabold md:text-5xl">
+            {fr ? "Exemples de réparations" : "Repair examples"}
+          </h2>
+          <p className="hidden font-mono text-xs uppercase tracking-wider text-ash sm:block">
+            {fr ? "Travaux réels en atelier" : "Real in-shop work"}
+          </p>
+        </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {items.map((it) => (
+            <figure key={it.title} className="reveal overflow-hidden rounded-md bg-card ring-1 ring-black/5 shadow-sm">
+              <div className="aspect-[4/3] overflow-hidden bg-graphite">
+                <img src={it.src} alt={it.alt} loading="lazy" className="h-full w-full object-cover" />
+              </div>
+              <figcaption className="px-5 py-4">
+                <div className="font-display text-lg font-bold">{it.title}</div>
+                <div className="mt-1 font-mono text-xs uppercase tracking-wider text-ash">{it.sub}</div>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
