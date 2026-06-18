@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   Phone, MapPin, Clock, Mail, Facebook, Instagram, Check, ChevronDown,
@@ -114,15 +114,15 @@ function Header({ lang, t }: { lang: Lang; t: Dict }) {
           >
             <Instagram size={18} />
           </a>
-          <Link
-            to={otherLangHref}
+          <a
+            href={otherLangHref}
             className="rounded-md border border-white/15 px-2 py-1.5 font-mono text-xs uppercase tracking-wider text-graphite-foreground/90 hover:border-brand hover:text-brand transition-colors"
             aria-label="Toggle language"
           >
             {lang === "fr" ? "🇫🇷 FR" : "🇬🇧 EN"}
             <span className="text-graphite-foreground/40"> / </span>
             <span className="text-graphite-foreground/40">{lang === "fr" ? "EN" : "FR"}</span>
-          </Link>
+          </a>
           <a
             href={TEL}
             className="inline-flex items-center gap-2 rounded-md bg-brand px-3 py-2 font-display text-xs font-bold text-brand-foreground hover:brightness-110 transition md:text-sm md:px-4"
@@ -309,13 +309,13 @@ function Services({ t, lang }: { t: Dict; lang: Lang }) {
               </>
             );
             return href ? (
-              <Link
+              <a
                 key={s.n}
-                to={href}
+                href={href}
                 className="reveal group flex flex-col rounded-md bg-card ring-1 ring-black/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition"
               >
                 {cardInner}
-              </Link>
+              </a>
             ) : (
               <article
                 key={s.n}
@@ -505,9 +505,9 @@ function RequestForm({ t, lang }: { t: Dict; lang: Lang }) {
             <Phone size={16} /> {PHONE}
           </a>
           <p className="mt-4 text-xs">
-            <Link to={fullPageHref} className="text-ink/60 underline hover:text-brand">
+            <a href={fullPageHref} className="text-ink/60 underline hover:text-brand">
               {lang === "fr" ? "Page de demande dédiée →" : "Dedicated request page →"}
-            </Link>
+            </a>
           </p>
         </div>
 
