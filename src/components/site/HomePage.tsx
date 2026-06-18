@@ -716,13 +716,18 @@ function Footer({ t }: { t: Dict }) {
 }
 
 /* ---------- Mobile call bar ---------- */
-function MobileCallBar({ label }: { label: string }) {
+function MobileCallBar({ label, lang }: { label: string; lang: Lang }) {
   return (
-    <a
-      href={TEL}
-      className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-center gap-2 bg-brand py-3.5 font-display text-sm font-bold text-brand-foreground shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.4)] md:hidden"
-    >
-      <Phone size={16} /> {label}
-    </a>
+    <div className="fixed inset-x-0 bottom-0 z-50 md:hidden">
+      <div className="flex items-center justify-center bg-graphite/95 px-3 py-1.5 backdrop-blur">
+        <OpenNowBadge lang={lang} size="sm" />
+      </div>
+      <a
+        href={TEL}
+        className="flex items-center justify-center gap-2 bg-brand py-3.5 font-display text-sm font-bold text-brand-foreground shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.4)]"
+      >
+        <Phone size={16} /> {label}
+      </a>
+    </div>
   );
 }
