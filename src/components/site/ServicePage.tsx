@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { Phone, Check, ArrowRight, ChevronDown, MapPin, Clock, Mail } from "lucide-react";
 import { useState } from "react";
 import type { Lang } from "@/lib/i18n";
@@ -54,12 +53,12 @@ export function ServicePage({ lang, service }: Props) {
               >
                 <Phone size={18} /> {cta}
               </a>
-              <Link
-                to={requestHref}
+              <a
+                href={requestHref}
                 className="inline-flex items-center justify-center gap-2 rounded-md border-2 border-ink px-5 py-3.5 font-display text-base font-bold text-ink hover:bg-ink hover:text-paper transition"
               >
                 {requestLabel} <ArrowRight size={18} />
-              </Link>
+              </a>
             </div>
 
             <p className="mt-6 font-mono text-xs uppercase tracking-wider text-ash">
