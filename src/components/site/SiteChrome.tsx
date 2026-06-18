@@ -2,6 +2,7 @@ import { Phone, Facebook, Instagram } from "lucide-react";
 import type { Lang } from "@/lib/i18n";
 import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
 import { SERVICES, SERVICE_ORDER } from "@/lib/services-data";
+import { OpenNowBadge } from "./OpenNowBadge";
 
 const PHONE = "819-300-1718";
 const TEL = "tel:+18193001718";
@@ -148,11 +149,16 @@ export function SiteFooter({ lang }: Props) {
 export function MobileCallBar({ lang }: Props) {
   const label = lang === "fr" ? "Appeler maintenant — 819-300-1718" : "Call now — 819-300-1718";
   return (
-    <a
-      href={TEL}
-      className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-center gap-2 bg-brand py-3.5 font-display text-sm font-bold text-brand-foreground shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.4)] md:hidden"
-    >
-      <Phone size={16} /> {label}
-    </a>
+    <div className="fixed inset-x-0 bottom-0 z-50 md:hidden">
+      <div className="flex items-center justify-center bg-graphite/95 px-3 py-1.5 backdrop-blur">
+        <OpenNowBadge lang={lang} size="sm" />
+      </div>
+      <a
+        href={TEL}
+        className="flex items-center justify-center gap-2 bg-brand py-3.5 font-display text-sm font-bold text-brand-foreground shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.4)]"
+      >
+        <Phone size={16} /> {label}
+      </a>
+    </div>
   );
 }

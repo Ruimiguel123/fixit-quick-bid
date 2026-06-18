@@ -22,7 +22,7 @@ const COPY = {
     sent: "Demande envoyée. On vous rappelle dans la journée.",
     contactTitle: "Ou passez en boutique",
     address: "1394 rue Denault, Sherbrooke QC J1H 2P8",
-    hours: "Lun–Ven 10 h–18 h · Sam 10 h–17 h",
+    hours: "Lun–Mer 10 h–18 h · Jeu–Ven 10 h–20 h · Sam 12 h–17 h",
   },
   en: {
     h1: "Repair Request",
@@ -39,7 +39,7 @@ const COPY = {
     sent: "Request sent. We'll call you back within the day.",
     contactTitle: "Or walk in to our shop",
     address: "1394 rue Denault, Sherbrooke QC J1H 2P8",
-    hours: "Mon–Fri 10 am–6 pm · Sat 10 am–5 pm",
+    hours: "Mon–Wed 10 am–6 pm · Thu–Fri 10 am–8 pm · Sat 12 pm–5 pm",
   },
 } as const;
 
