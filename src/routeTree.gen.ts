@@ -9,13 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as EnRouteImport } from './routes/en'
+import { Route as DemandeReparationRouteImport } from './routes/demande-reparation'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
+import { Route as EnIndexRouteImport } from './routes/en.index'
+import { Route as ServicesSamsungRouteImport } from './routes/services.samsung'
+import { Route as ServicesPixelRouteImport } from './routes/services.pixel'
+import { Route as ServicesEcranIphoneRouteImport } from './routes/services.ecran-iphone'
+import { Route as ServicesDeverrouillageRouteImport } from './routes/services.deverrouillage'
+import { Route as ServicesBatterieRouteImport } from './routes/services.batterie'
+import { Route as EnRepairRequestRouteImport } from './routes/en.repair-request'
+import { Route as EnServicesUnlockingRouteImport } from './routes/en.services.unlocking'
+import { Route as EnServicesSamsungRouteImport } from './routes/en.services.samsung'
+import { Route as EnServicesPixelRouteImport } from './routes/en.services.pixel'
+import { Route as EnServicesIphoneScreenRouteImport } from './routes/en.services.iphone-screen'
+import { Route as EnServicesBatteryRouteImport } from './routes/en.services.battery'
 
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnRoute = EnRouteImport.update({
+  id: '/en',
+  path: '/en',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemandeReparationRoute = DemandeReparationRouteImport.update({
+  id: '/demande-reparation',
+  path: '/demande-reparation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -23,49 +46,210 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SitemapXmlRoute = SitemapXmlRouteImport.update({
-  id: '/sitemap/xml',
-  path: '/sitemap/xml',
+const EnIndexRoute = EnIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EnRoute,
+} as any)
+const ServicesSamsungRoute = ServicesSamsungRouteImport.update({
+  id: '/services/samsung',
+  path: '/services/samsung',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPixelRoute = ServicesPixelRouteImport.update({
+  id: '/services/pixel',
+  path: '/services/pixel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesEcranIphoneRoute = ServicesEcranIphoneRouteImport.update({
+  id: '/services/ecran-iphone',
+  path: '/services/ecran-iphone',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesDeverrouillageRoute = ServicesDeverrouillageRouteImport.update({
+  id: '/services/deverrouillage',
+  path: '/services/deverrouillage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesBatterieRoute = ServicesBatterieRouteImport.update({
+  id: '/services/batterie',
+  path: '/services/batterie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnRepairRequestRoute = EnRepairRequestRouteImport.update({
+  id: '/repair-request',
+  path: '/repair-request',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnServicesUnlockingRoute = EnServicesUnlockingRouteImport.update({
+  id: '/services/unlocking',
+  path: '/services/unlocking',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnServicesSamsungRoute = EnServicesSamsungRouteImport.update({
+  id: '/services/samsung',
+  path: '/services/samsung',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnServicesPixelRoute = EnServicesPixelRouteImport.update({
+  id: '/services/pixel',
+  path: '/services/pixel',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnServicesIphoneScreenRoute = EnServicesIphoneScreenRouteImport.update({
+  id: '/services/iphone-screen',
+  path: '/services/iphone-screen',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnServicesBatteryRoute = EnServicesBatteryRouteImport.update({
+  id: '/services/battery',
+  path: '/services/battery',
+  getParentRoute: () => EnRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/services': typeof ServicesRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
+  '/demande-reparation': typeof DemandeReparationRoute
+  '/en': typeof EnRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/en/repair-request': typeof EnRepairRequestRoute
+  '/services/batterie': typeof ServicesBatterieRoute
+  '/services/deverrouillage': typeof ServicesDeverrouillageRoute
+  '/services/ecran-iphone': typeof ServicesEcranIphoneRoute
+  '/services/pixel': typeof ServicesPixelRoute
+  '/services/samsung': typeof ServicesSamsungRoute
+  '/en/': typeof EnIndexRoute
+  '/en/services/battery': typeof EnServicesBatteryRoute
+  '/en/services/iphone-screen': typeof EnServicesIphoneScreenRoute
+  '/en/services/pixel': typeof EnServicesPixelRoute
+  '/en/services/samsung': typeof EnServicesSamsungRoute
+  '/en/services/unlocking': typeof EnServicesUnlockingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/services': typeof ServicesRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
+  '/demande-reparation': typeof DemandeReparationRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/en/repair-request': typeof EnRepairRequestRoute
+  '/services/batterie': typeof ServicesBatterieRoute
+  '/services/deverrouillage': typeof ServicesDeverrouillageRoute
+  '/services/ecran-iphone': typeof ServicesEcranIphoneRoute
+  '/services/pixel': typeof ServicesPixelRoute
+  '/services/samsung': typeof ServicesSamsungRoute
+  '/en': typeof EnIndexRoute
+  '/en/services/battery': typeof EnServicesBatteryRoute
+  '/en/services/iphone-screen': typeof EnServicesIphoneScreenRoute
+  '/en/services/pixel': typeof EnServicesPixelRoute
+  '/en/services/samsung': typeof EnServicesSamsungRoute
+  '/en/services/unlocking': typeof EnServicesUnlockingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/services': typeof ServicesRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
+  '/demande-reparation': typeof DemandeReparationRoute
+  '/en': typeof EnRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/en/repair-request': typeof EnRepairRequestRoute
+  '/services/batterie': typeof ServicesBatterieRoute
+  '/services/deverrouillage': typeof ServicesDeverrouillageRoute
+  '/services/ecran-iphone': typeof ServicesEcranIphoneRoute
+  '/services/pixel': typeof ServicesPixelRoute
+  '/services/samsung': typeof ServicesSamsungRoute
+  '/en/': typeof EnIndexRoute
+  '/en/services/battery': typeof EnServicesBatteryRoute
+  '/en/services/iphone-screen': typeof EnServicesIphoneScreenRoute
+  '/en/services/pixel': typeof EnServicesPixelRoute
+  '/en/services/samsung': typeof EnServicesSamsungRoute
+  '/en/services/unlocking': typeof EnServicesUnlockingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/services' | '/sitemap/xml'
+  fullPaths:
+    | '/'
+    | '/demande-reparation'
+    | '/en'
+    | '/sitemap.xml'
+    | '/en/repair-request'
+    | '/services/batterie'
+    | '/services/deverrouillage'
+    | '/services/ecran-iphone'
+    | '/services/pixel'
+    | '/services/samsung'
+    | '/en/'
+    | '/en/services/battery'
+    | '/en/services/iphone-screen'
+    | '/en/services/pixel'
+    | '/en/services/samsung'
+    | '/en/services/unlocking'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/services' | '/sitemap/xml'
-  id: '__root__' | '/' | '/services' | '/sitemap/xml'
+  to:
+    | '/'
+    | '/demande-reparation'
+    | '/sitemap.xml'
+    | '/en/repair-request'
+    | '/services/batterie'
+    | '/services/deverrouillage'
+    | '/services/ecran-iphone'
+    | '/services/pixel'
+    | '/services/samsung'
+    | '/en'
+    | '/en/services/battery'
+    | '/en/services/iphone-screen'
+    | '/en/services/pixel'
+    | '/en/services/samsung'
+    | '/en/services/unlocking'
+  id:
+    | '__root__'
+    | '/'
+    | '/demande-reparation'
+    | '/en'
+    | '/sitemap.xml'
+    | '/en/repair-request'
+    | '/services/batterie'
+    | '/services/deverrouillage'
+    | '/services/ecran-iphone'
+    | '/services/pixel'
+    | '/services/samsung'
+    | '/en/'
+    | '/en/services/battery'
+    | '/en/services/iphone-screen'
+    | '/en/services/pixel'
+    | '/en/services/samsung'
+    | '/en/services/unlocking'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ServicesRoute: typeof ServicesRoute
-  SitemapXmlRoute: typeof SitemapXmlRoute
+  DemandeReparationRoute: typeof DemandeReparationRoute
+  EnRoute: typeof EnRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ServicesBatterieRoute: typeof ServicesBatterieRoute
+  ServicesDeverrouillageRoute: typeof ServicesDeverrouillageRoute
+  ServicesEcranIphoneRoute: typeof ServicesEcranIphoneRoute
+  ServicesPixelRoute: typeof ServicesPixelRoute
+  ServicesSamsungRoute: typeof ServicesSamsungRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en': {
+      id: '/en'
+      path: '/en'
+      fullPath: '/en'
+      preLoaderRoute: typeof EnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demande-reparation': {
+      id: '/demande-reparation'
+      path: '/demande-reparation'
+      fullPath: '/demande-reparation'
+      preLoaderRoute: typeof DemandeReparationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -75,31 +259,126 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sitemap/xml': {
-      id: '/sitemap/xml'
-      path: '/sitemap/xml'
-      fullPath: '/sitemap/xml'
-      preLoaderRoute: typeof SitemapXmlRouteImport
+    '/en/': {
+      id: '/en/'
+      path: '/'
+      fullPath: '/en/'
+      preLoaderRoute: typeof EnIndexRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/services/samsung': {
+      id: '/services/samsung'
+      path: '/services/samsung'
+      fullPath: '/services/samsung'
+      preLoaderRoute: typeof ServicesSamsungRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/services/pixel': {
+      id: '/services/pixel'
+      path: '/services/pixel'
+      fullPath: '/services/pixel'
+      preLoaderRoute: typeof ServicesPixelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/ecran-iphone': {
+      id: '/services/ecran-iphone'
+      path: '/services/ecran-iphone'
+      fullPath: '/services/ecran-iphone'
+      preLoaderRoute: typeof ServicesEcranIphoneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/deverrouillage': {
+      id: '/services/deverrouillage'
+      path: '/services/deverrouillage'
+      fullPath: '/services/deverrouillage'
+      preLoaderRoute: typeof ServicesDeverrouillageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/batterie': {
+      id: '/services/batterie'
+      path: '/services/batterie'
+      fullPath: '/services/batterie'
+      preLoaderRoute: typeof ServicesBatterieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/repair-request': {
+      id: '/en/repair-request'
+      path: '/repair-request'
+      fullPath: '/en/repair-request'
+      preLoaderRoute: typeof EnRepairRequestRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/services/unlocking': {
+      id: '/en/services/unlocking'
+      path: '/services/unlocking'
+      fullPath: '/en/services/unlocking'
+      preLoaderRoute: typeof EnServicesUnlockingRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/services/samsung': {
+      id: '/en/services/samsung'
+      path: '/services/samsung'
+      fullPath: '/en/services/samsung'
+      preLoaderRoute: typeof EnServicesSamsungRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/services/pixel': {
+      id: '/en/services/pixel'
+      path: '/services/pixel'
+      fullPath: '/en/services/pixel'
+      preLoaderRoute: typeof EnServicesPixelRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/services/iphone-screen': {
+      id: '/en/services/iphone-screen'
+      path: '/services/iphone-screen'
+      fullPath: '/en/services/iphone-screen'
+      preLoaderRoute: typeof EnServicesIphoneScreenRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/services/battery': {
+      id: '/en/services/battery'
+      path: '/services/battery'
+      fullPath: '/en/services/battery'
+      preLoaderRoute: typeof EnServicesBatteryRouteImport
+      parentRoute: typeof EnRoute
     }
   }
 }
 
+interface EnRouteChildren {
+  EnRepairRequestRoute: typeof EnRepairRequestRoute
+  EnIndexRoute: typeof EnIndexRoute
+  EnServicesBatteryRoute: typeof EnServicesBatteryRoute
+  EnServicesIphoneScreenRoute: typeof EnServicesIphoneScreenRoute
+  EnServicesPixelRoute: typeof EnServicesPixelRoute
+  EnServicesSamsungRoute: typeof EnServicesSamsungRoute
+  EnServicesUnlockingRoute: typeof EnServicesUnlockingRoute
+}
+
+const EnRouteChildren: EnRouteChildren = {
+  EnRepairRequestRoute: EnRepairRequestRoute,
+  EnIndexRoute: EnIndexRoute,
+  EnServicesBatteryRoute: EnServicesBatteryRoute,
+  EnServicesIphoneScreenRoute: EnServicesIphoneScreenRoute,
+  EnServicesPixelRoute: EnServicesPixelRoute,
+  EnServicesSamsungRoute: EnServicesSamsungRoute,
+  EnServicesUnlockingRoute: EnServicesUnlockingRoute,
+}
+
+const EnRouteWithChildren = EnRoute._addFileChildren(EnRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ServicesRoute: ServicesRoute,
-  SitemapXmlRoute: SitemapXmlRoute,
+  DemandeReparationRoute: DemandeReparationRoute,
+  EnRoute: EnRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ServicesBatterieRoute: ServicesBatterieRoute,
+  ServicesDeverrouillageRoute: ServicesDeverrouillageRoute,
+  ServicesEcranIphoneRoute: ServicesEcranIphoneRoute,
+  ServicesPixelRoute: ServicesPixelRoute,
+  ServicesSamsungRoute: ServicesSamsungRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

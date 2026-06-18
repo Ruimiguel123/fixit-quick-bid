@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://id-preview--2356e601-40a2-4516-97fb-c872cc654386.lovable.app/sitemap.xml
+Sitemap: https://fixit-quick-bid.lovable.app/sitemap.xml
