@@ -147,8 +147,9 @@ export const translations: Record<Lang, Dict> = {
       hoursLabel: "Heures d'ouverture",
       emailLabel: "Courriel",
       hours: [
-        { d: "Lundi – Vendredi", h: "10 h – 18 h" },
-        { d: "Samedi", h: "10 h – 17 h" },
+        { d: "Lundi – Mercredi", h: "10 h – 18 h" },
+        { d: "Jeudi – Vendredi", h: "10 h – 20 h" },
+        { d: "Samedi", h: "12 h – 17 h" },
         { d: "Dimanche", h: "Fermé" },
       ],
     },
@@ -289,8 +290,9 @@ export const translations: Record<Lang, Dict> = {
       hoursLabel: "Opening hours",
       emailLabel: "Email",
       hours: [
-        { d: "Monday – Friday", h: "10 am – 6 pm" },
-        { d: "Saturday", h: "10 am – 5 pm" },
+        { d: "Monday – Wednesday", h: "10 am – 6 pm" },
+        { d: "Thursday – Friday", h: "10 am – 8 pm" },
+        { d: "Saturday", h: "12 pm – 5 pm" },
         { d: "Sunday", h: "Closed" },
       ],
     },
