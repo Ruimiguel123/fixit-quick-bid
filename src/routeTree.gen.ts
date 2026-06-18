@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as EnRouteImport } from './routes/en'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
 
 const ServicesRoute = ServicesRouteImport.update({
@@ -18,10 +20,20 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnRoute = EnRouteImport.update({
+  id: '/en',
+  path: '/en',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const EnIndexRoute = EnIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EnRoute,
 } as any)
 const SitemapXmlRoute = SitemapXmlRouteImport.update({
   id: '/sitemap/xml',
@@ -31,30 +43,36 @@ const SitemapXmlRoute = SitemapXmlRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/en': typeof EnRouteWithChildren
   '/services': typeof ServicesRoute
   '/sitemap/xml': typeof SitemapXmlRoute
+  '/en/': typeof EnIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/services': typeof ServicesRoute
   '/sitemap/xml': typeof SitemapXmlRoute
+  '/en': typeof EnIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/en': typeof EnRouteWithChildren
   '/services': typeof ServicesRoute
   '/sitemap/xml': typeof SitemapXmlRoute
+  '/en/': typeof EnIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/services' | '/sitemap/xml'
+  fullPaths: '/' | '/en' | '/services' | '/sitemap/xml' | '/en/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/services' | '/sitemap/xml'
-  id: '__root__' | '/' | '/services' | '/sitemap/xml'
+  to: '/' | '/services' | '/sitemap/xml' | '/en'
+  id: '__root__' | '/' | '/en' | '/services' | '/sitemap/xml' | '/en/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EnRoute: typeof EnRouteWithChildren
   ServicesRoute: typeof ServicesRoute
   SitemapXmlRoute: typeof SitemapXmlRoute
 }
@@ -68,12 +86,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en': {
+      id: '/en'
+      path: '/en'
+      fullPath: '/en'
+      preLoaderRoute: typeof EnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/en/': {
+      id: '/en/'
+      path: '/'
+      fullPath: '/en/'
+      preLoaderRoute: typeof EnIndexRouteImport
+      parentRoute: typeof EnRoute
     }
     '/sitemap/xml': {
       id: '/sitemap/xml'
@@ -85,8 +117,19 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface EnRouteChildren {
+  EnIndexRoute: typeof EnIndexRoute
+}
+
+const EnRouteChildren: EnRouteChildren = {
+  EnIndexRoute: EnIndexRoute,
+}
+
+const EnRouteWithChildren = EnRoute._addFileChildren(EnRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EnRoute: EnRouteWithChildren,
   ServicesRoute: ServicesRoute,
   SitemapXmlRoute: SitemapXmlRoute,
 }
