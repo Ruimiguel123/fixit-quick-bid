@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { Phone, Facebook, Instagram } from "lucide-react";
 import type { Lang } from "@/lib/i18n";
 import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
@@ -16,14 +15,15 @@ interface Props {
 export function SiteHeader({ lang }: Props) {
   const homeHref = lang === "fr" ? "/" : "/en";
   const otherLangHref = lang === "fr" ? "/en" : "/";
+  const requestHref = lang === "fr" ? "/demande-reparation" : "/en/repair-request";
   const labels = lang === "fr"
-    ? { services: "Services", request: "Demande", call: "Appeler" }
-    : { services: "Services", request: "Request", call: "Call" };
+    ? { home: "Accueil", services: "Services", request: "Demande", call: "Appeler" }
+    : { home: "Home", services: "Services", request: "Request", call: "Call" };
 
   return (
     <header className="sticky top-0 z-50 bg-graphite text-graphite-foreground shadow-lg shadow-black/20">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2 md:px-6">
-        <Link to={homeHref} className="flex items-center">
+        <a href={homeHref} className="flex items-center">
           <img
             src={logoAsset.url}
             alt="DigitalExpert.ca"
@@ -32,12 +32,12 @@ export function SiteHeader({ lang }: Props) {
             height={392}
             decoding="async"
           />
-        </Link>
+        </a>
 
         <nav className="hidden items-center gap-6 lg:flex">
-          <Link to={homeHref} className="text-sm text-graphite-foreground/80 hover:text-brand transition-colors">
-            {lang === "fr" ? "Accueil" : "Home"}
-          </Link>
+          <a href={homeHref} className="text-sm text-graphite-foreground/80 hover:text-brand transition-colors">
+            {labels.home}
+          </a>
           <div className="group relative">
             <button className="text-sm text-graphite-foreground/80 hover:text-brand transition-colors">
               {labels.services}
@@ -47,23 +47,23 @@ export function SiteHeader({ lang }: Props) {
                 const s = SERVICES[key][lang];
                 const href = lang === "fr" ? `/services/${s.slug}` : `/en/services/${s.slug}`;
                 return (
-                  <Link
+                  <a
                     key={key}
-                    to={href}
+                    href={href}
                     className="block rounded px-3 py-2 text-sm text-graphite-foreground/85 hover:bg-white/5 hover:text-brand"
                   >
                     {s.navLabel}
-                  </Link>
+                  </a>
                 );
               })}
             </div>
           </div>
-          <Link
-            to={lang === "fr" ? "/demande-reparation" : "/en/repair-request"}
+          <a
+            href={requestHref}
             className="text-sm text-graphite-foreground/80 hover:text-brand transition-colors"
           >
             {labels.request}
-          </Link>
+          </a>
         </nav>
 
         <div className="flex items-center gap-2 md:gap-3">
@@ -85,13 +85,13 @@ export function SiteHeader({ lang }: Props) {
           >
             <Instagram size={18} />
           </a>
-          <Link
-            to={otherLangHref}
+          <a
+            href={otherLangHref}
             className="rounded-md border border-white/15 px-2 py-1.5 font-mono text-xs uppercase tracking-wider text-graphite-foreground/90 hover:border-brand hover:text-brand transition-colors"
             aria-label="Toggle language"
           >
             {lang === "fr" ? "EN" : "FR"}
-          </Link>
+          </a>
           <a
             href={TEL}
             className="inline-flex items-center gap-2 rounded-md bg-brand px-3 py-2 font-display text-xs font-bold text-brand-foreground hover:brightness-110 transition md:text-sm md:px-4"
@@ -129,22 +129,10 @@ export function SiteFooter({ lang }: Props) {
           <a href={TEL} className="inline-flex items-center gap-2 hover:text-brand">
             <Phone size={14} /> {PHONE}
           </a>
-          <a
-            href={FB}
-            target="_blank"
-            rel="noopener"
-            aria-label="Facebook"
-            className="inline-flex items-center gap-2 hover:text-brand"
-          >
+          <a href={FB} target="_blank" rel="noopener" aria-label="Facebook" className="inline-flex items-center gap-2 hover:text-brand">
             <Facebook size={14} /> Facebook
           </a>
-          <a
-            href={IG}
-            target="_blank"
-            rel="noopener"
-            aria-label="Instagram"
-            className="inline-flex items-center gap-2 hover:text-brand"
-          >
+          <a href={IG} target="_blank" rel="noopener" aria-label="Instagram" className="inline-flex items-center gap-2 hover:text-brand">
             <Instagram size={14} /> Instagram
           </a>
         </div>
