@@ -444,9 +444,6 @@ function About({ t }: { t: Dict }) {
             <div className="absolute inset-0 bg-gradient-to-br from-graphite via-ink to-graphite" />
             <div className="absolute inset-0 cube-pattern opacity-40" />
             <div className="absolute inset-0 bg-gradient-to-t from-brand/30 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 rounded-md bg-card/95 px-4 py-3 font-mono text-xs uppercase tracking-wider text-ink/70 backdrop-blur">
-              {t.about.photoAlt}
-            </div>
           </div>
         </div>
       </div>
