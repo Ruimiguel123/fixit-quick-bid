@@ -9,6 +9,7 @@ import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
 import { SERVICES, SERVICE_ORDER } from "@/lib/services-data";
 import samsungRepairAsset from "@/assets/samsung-screen-repair.jpg.asset.json";
 import iphoneRepairAsset from "@/assets/iphone-screen-repair.jpg.asset.json";
+import { OpenNowBadge } from "./OpenNowBadge";
 
 const PHONE = "819-300-1718";
 const TEL = "tel:+18193001718";
@@ -55,7 +56,7 @@ export function HomePage({ lang }: { lang: Lang }) {
         <Contact t={t} />
       </main>
       <Footer t={t} />
-      <MobileCallBar label={t.mobileBar} />
+      <MobileCallBar label={t.mobileBar} lang={lang} />
     </div>
   );
 }
@@ -615,10 +616,15 @@ function Field({
 
 /* ---------- Contact ---------- */
 function Contact({ t }: { t: Dict }) {
+  // Detect lang from html element (set in HomePage useEffect)
+  const lang = typeof document !== "undefined" && document.documentElement.lang === "en" ? "en" : "fr";
   return (
     <section id="contact" className="bg-background py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <h2 className="reveal font-display text-3xl font-extrabold md:text-5xl">{t.contact.title}</h2>
+        <div className="reveal flex flex-wrap items-center gap-4">
+          <h2 className="font-display text-3xl font-extrabold md:text-5xl">{t.contact.title}</h2>
+          <OpenNowBadge lang={lang} />
+        </div>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-2">
           <div className="reveal space-y-6">
