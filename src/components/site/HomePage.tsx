@@ -46,6 +46,7 @@ export function HomePage({ lang }: { lang: Lang }) {
         <Services t={t} lang={lang} />
         <HowItWorks t={t} />
         <About t={t} />
+        <RepairExamples lang={lang} />
         <Reviews t={t} />
         <Faq t={t} />
         <RequestForm t={t} lang={lang} />
