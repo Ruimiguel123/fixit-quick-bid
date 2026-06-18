@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as EnRouteImport } from './routes/en'
 import { Route as DemandeReparationRouteImport } from './routes/demande-reparation'
 import { Route as IndexRouteImport } from './routes/index'
@@ -25,6 +26,11 @@ import { Route as EnServicesPixelRouteImport } from './routes/en.services.pixel'
 import { Route as EnServicesIphoneScreenRouteImport } from './routes/en.services.iphone-screen'
 import { Route as EnServicesBatteryRouteImport } from './routes/en.services.battery'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnRoute = EnRouteImport.update({
   id: '/en',
   path: '/en',
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/demande-reparation': typeof DemandeReparationRoute
   '/en': typeof EnRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/en/repair-request': typeof EnRepairRequestRoute
   '/services/batterie': typeof ServicesBatterieRoute
   '/services/deverrouillage': typeof ServicesDeverrouillageRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/demande-reparation': typeof DemandeReparationRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/en/repair-request': typeof EnRepairRequestRoute
   '/services/batterie': typeof ServicesBatterieRoute
   '/services/deverrouillage': typeof ServicesDeverrouillageRoute
@@ -139,6 +147,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/demande-reparation': typeof DemandeReparationRoute
   '/en': typeof EnRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/en/repair-request': typeof EnRepairRequestRoute
   '/services/batterie': typeof ServicesBatterieRoute
   '/services/deverrouillage': typeof ServicesDeverrouillageRoute
@@ -158,6 +167,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demande-reparation'
     | '/en'
+    | '/sitemap.xml'
     | '/en/repair-request'
     | '/services/batterie'
     | '/services/deverrouillage'
@@ -174,6 +184,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/demande-reparation'
+    | '/sitemap.xml'
     | '/en/repair-request'
     | '/services/batterie'
     | '/services/deverrouillage'
@@ -191,6 +202,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demande-reparation'
     | '/en'
+    | '/sitemap.xml'
     | '/en/repair-request'
     | '/services/batterie'
     | '/services/deverrouillage'
@@ -209,6 +221,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DemandeReparationRoute: typeof DemandeReparationRoute
   EnRoute: typeof EnRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ServicesBatterieRoute: typeof ServicesBatterieRoute
   ServicesDeverrouillageRoute: typeof ServicesDeverrouillageRoute
   ServicesEcranIphoneRoute: typeof ServicesEcranIphoneRoute
@@ -218,6 +231,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en': {
       id: '/en'
       path: '/en'
@@ -352,6 +372,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DemandeReparationRoute: DemandeReparationRoute,
   EnRoute: EnRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ServicesBatterieRoute: ServicesBatterieRoute,
   ServicesDeverrouillageRoute: ServicesDeverrouillageRoute,
   ServicesEcranIphoneRoute: ServicesEcranIphoneRoute,
