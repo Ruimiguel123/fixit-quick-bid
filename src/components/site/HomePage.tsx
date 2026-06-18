@@ -7,6 +7,8 @@ import {
 import { translations, type Lang, type Dict } from "@/lib/i18n";
 import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
 import { SERVICES, SERVICE_ORDER } from "@/lib/services-data";
+import samsungRepairAsset from "@/assets/samsung-screen-repair.jpg.asset.json";
+import iphoneRepairAsset from "@/assets/iphone-screen-repair.jpg.asset.json";
 
 const PHONE = "819-300-1718";
 const TEL = "tel:+18193001718";
