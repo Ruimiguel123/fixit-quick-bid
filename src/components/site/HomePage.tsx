@@ -53,7 +53,7 @@ export function HomePage({ lang }: { lang: Lang }) {
         <Reviews t={t} />
         <Faq t={t} />
         <RequestForm t={t} lang={lang} />
-        <Contact t={t} />
+        <Contact t={t} lang={lang} />
       </main>
       <Footer t={t} />
       <MobileCallBar label={t.mobileBar} lang={lang} />
@@ -615,9 +615,7 @@ function Field({
 }
 
 /* ---------- Contact ---------- */
-function Contact({ t }: { t: Dict }) {
-  // Detect lang from html element (set in HomePage useEffect)
-  const lang = typeof document !== "undefined" && document.documentElement.lang === "en" ? "en" : "fr";
+function Contact({ t, lang }: { t: Dict; lang: Lang }) {
   return (
     <section id="contact" className="bg-background py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
