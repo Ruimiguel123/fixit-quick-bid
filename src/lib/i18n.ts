@@ -269,6 +269,7 @@ export const translations: Record<Lang, Dict> = {
         { q: "Do I need an appointment?", a: "No. Walk in any time during opening hours. A quick call ahead helps us confirm the part is in stock." },
         { q: "Will I lose my data?", a: "No. A screen or battery repair doesn't touch your data. We let you know in advance if any work carries a risk." },
         { q: "What are your prices?", a: "Screens from $109, batteries from $79. For other repairs we give a free estimate. Price is firm before we start." },
+        { q: "Is the diagnostic always free?", a: "The visual and functional diagnostic is free. If the device has to be opened to identify the problem (water damage, internal failure, motherboard), a diagnostic fee applies. We tell you before opening anything." },
         { q: "What does the 90-day warranty cover?", a: "The written warranty covers installed parts and labour for 90 days. It doesn't cover new physical damage or water damage that happens after the repair." },
       ],
     },
