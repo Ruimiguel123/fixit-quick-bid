@@ -3,6 +3,7 @@ import type { Lang } from "@/lib/i18n";
 import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
 import { SERVICES, SERVICE_ORDER } from "@/lib/services-data";
 import { OpenNowBadge } from "./OpenNowBadge";
+import { ThemeToggle } from "./ThemeToggle";
 
 const PHONE = "819-300-1718";
 const TEL = "tel:+18193001718";
@@ -86,6 +87,7 @@ export function SiteHeader({ lang }: Props) {
           >
             <Instagram size={18} />
           </a>
+          <ThemeToggle lang={lang} />
           <a
             href={otherLangHref}
             className="rounded-md border border-white/15 px-2 py-1.5 font-mono text-xs uppercase tracking-wider text-graphite-foreground/90 hover:border-brand hover:text-brand transition-colors"
