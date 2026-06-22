@@ -10,6 +10,7 @@ import { SERVICES, SERVICE_ORDER } from "@/lib/services-data";
 import samsungRepairAsset from "@/assets/samsung-screen-repair.jpg.asset.json";
 import iphoneRepairAsset from "@/assets/iphone-screen-repair.jpg.asset.json";
 import { OpenNowBadge } from "./OpenNowBadge";
+import { ThemeToggle } from "./ThemeToggle";
 
 const PHONE = "819-300-1718";
 const TEL = "tel:+18193001718";
@@ -135,6 +136,7 @@ function Header({ lang, t }: { lang: Lang; t: Dict }) {
             <span className="hidden sm:inline">{PHONE}</span>
             <span className="sm:hidden">{t.nav.call}</span>
           </a>
+          <ThemeToggle lang={lang} />
         </div>
       </div>
     </header>
