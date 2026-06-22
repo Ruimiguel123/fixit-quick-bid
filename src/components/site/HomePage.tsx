@@ -428,7 +428,7 @@ function RepairExamples({ lang }: { lang: Lang }) {
 function About({ t }: { t: Dict }) {
   return (
     <section id="about" className="bg-background py-16 md:py-24">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 md:px-6 lg:grid-cols-2 lg:items-center">
+      <div className="mx-auto max-w-3xl px-4 md:px-6">
         <div className="reveal">
           <h2 className="font-display text-3xl font-extrabold md:text-5xl">{t.about.title}</h2>
           <p className="mt-5 text-base text-ink/75 md:text-lg">{t.about.p1}</p>
@@ -442,14 +442,6 @@ function About({ t }: { t: Dict }) {
               </div>
             ))}
           </dl>
-        </div>
-
-        <div className="reveal relative">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-md ring-1 ring-black/5 shadow-xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-graphite via-ink to-graphite" />
-            <div className="absolute inset-0 cube-pattern opacity-40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand/30 via-transparent to-transparent" />
-          </div>
         </div>
       </div>
     </section>
