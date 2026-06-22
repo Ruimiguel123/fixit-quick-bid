@@ -184,6 +184,13 @@
     50% { transform: rotate(-2deg) translateY(-10px); }
   }
 
+  @keyframes cookie-slide-in {
+    0% { opacity: 0; transform: translateY(24px) scale(0.96); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+
+
   .stamp {
     border: 3px solid var(--brand);
     color: var(--brand);
