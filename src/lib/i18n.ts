@@ -94,7 +94,7 @@ export const translations: Record<Lang, Dict> = {
     how: {
       title: "Comment ça marche",
       steps: [
-        { n: "1", t: "Diagnostic gratuit", d: "Apportez votre appareil. On évalue le problème, on vous donne un prix ferme avant de commencer." },
+        { n: "1", t: "Diagnostic gratuit", d: "Apportez votre appareil. On évalue le problème, on vous donne un prix ferme avant de commencer. Note : si l'appareil doit être ouvert pour poser un diagnostic, des frais s'appliquent." },
         { n: "2", t: "Réparation le jour même", d: "Écrans et batteries en moins d'une heure dans la plupart des cas. Pièces de qualité en stock." },
         { n: "3", t: "Garantie 90 jours", d: "Garantie écrite sur les pièces et la main-d'œuvre. Un souci ? On reprend l'appareil." },
       ],
