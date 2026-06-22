@@ -11,6 +11,7 @@ import samsungRepairAsset from "@/assets/samsung-screen-repair.jpg.asset.json";
 import iphoneRepairAsset from "@/assets/iphone-screen-repair.jpg.asset.json";
 import { OpenNowBadge } from "./OpenNowBadge";
 import { ThemeToggle } from "./ThemeToggle";
+import { RepairRequestWidget } from "./RepairRequestWidget";
 
 const PHONE = "819-300-1718";
 const TEL = "tel:+18193001718";
@@ -58,6 +59,7 @@ export function HomePage({ lang }: { lang: Lang }) {
       </main>
       <Footer t={t} />
       <MobileCallBar label={t.mobileBar} lang={lang} />
+      <RepairRequestWidget lang={lang} />
     </div>
   );
 }

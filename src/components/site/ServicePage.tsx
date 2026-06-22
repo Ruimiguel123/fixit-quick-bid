@@ -3,6 +3,7 @@ import { useState } from "react";
 import type { Lang } from "@/lib/i18n";
 import type { ServiceContent } from "@/lib/services-data";
 import { SiteHeader, SiteFooter, MobileCallBar } from "./SiteChrome";
+import { RepairRequestWidget } from "./RepairRequestWidget";
 
 const PHONE = "819-300-1718";
 const TEL = "tel:+18193001718";
@@ -139,6 +140,7 @@ export function ServicePage({ lang, service }: Props) {
 
       <SiteFooter lang={lang} />
       <MobileCallBar lang={lang} />
+      <RepairRequestWidget lang={lang} />
     </div>
   );
 }
