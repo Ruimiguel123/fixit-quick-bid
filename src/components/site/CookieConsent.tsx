@@ -13,19 +13,19 @@ const COPY: Record<Lang, {
   settings: string;
 }> = {
   fr: {
-    title: "Nous respectons votre vie privée.",
+    title: "Cookies",
     body:
-      "Nous utilisons des cookies pour améliorer votre expérience de navigation, diffuser des publicités ou des contenus personnalisés et analyser notre trafic. En cliquant sur « Tout accepter », vous consentez à notre utilisation des cookies.",
-    accept: "Tout accepter",
+      "Nous utilisons des cookies pour faire fonctionner le site et mesurer son audience. Vous pouvez accepter ou refuser à tout moment.",
+    accept: "Accepter",
     reject: "Refuser",
     settings: "Préférences",
   },
   en: {
-    title: "We value your privacy.",
+    title: "Cookies",
     body:
-      "We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking \"Accept all\", you consent to our use of cookies.",
-    accept: "Accept all",
-    reject: "Reject",
+      "We use cookies to run this site and measure its traffic. You can accept or decline at any time.",
+    accept: "Accept",
+    reject: "Decline",
     settings: "Preferences",
   },
 };
@@ -61,7 +61,7 @@ export function CookieConsent() {
       role="dialog"
       aria-live="polite"
       aria-label={t.title}
-      className="fixed bottom-4 left-4 right-4 z-[70] md:left-auto md:right-6 md:bottom-6 md:max-w-md"
+      className="fixed bottom-4 left-4 right-4 z-[70] md:right-auto md:left-6 md:bottom-6 md:max-w-md"
     >
       <div className="rounded-xl border border-border bg-card text-card-foreground shadow-2xl p-4 md:p-5">
         <h2 className="font-display text-base font-bold">{t.title}</h2>
