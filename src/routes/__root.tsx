@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieConsent } from "../components/site/CookieConsent";
+import { LoadingScreen } from "../components/site/LoadingScreen";
 
 function NotFoundComponent() {
   return (
