@@ -61,7 +61,7 @@ export function CookieConsent() {
       role="dialog"
       aria-live="polite"
       aria-label={t.title}
-      className="fixed bottom-4 left-4 right-4 z-[70] md:right-auto md:left-6 md:bottom-6 md:max-w-md"
+      className="fixed bottom-4 left-4 right-4 z-[70] md:right-auto md:left-6 md:bottom-6 md:max-w-md animate-[cookie-slide-in_0.5s_cubic-bezier(0.16,1,0.3,1)_0.3s_both]"
     >
       <div className="rounded-xl border border-border bg-card text-card-foreground shadow-2xl p-4 md:p-5">
         <h2 className="font-display text-base font-bold">{t.title}</h2>
