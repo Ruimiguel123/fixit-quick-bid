@@ -126,7 +126,7 @@ export const translations: Record<Lang, Dict> = {
         { q: "Vais-je perdre mes données ?", a: "Non. Une réparation d'écran ou de batterie ne touche pas à vos données. On vous prévient si une intervention présente un risque." },
         { q: "Quels sont vos prix ?", a: "Écrans dès 109 $, batteries dès 79 $. Pour les autres réparations, on donne une soumission gratuite. Le prix est ferme avant qu'on commence." },
         { q: "Le diagnostic est-il toujours gratuit ?", a: "Le diagnostic visuel et fonctionnel est gratuit. Si l'appareil doit être ouvert pour identifier le problème (dégât d'eau, panne interne, carte mère), des frais de diagnostic s'appliquent. On vous en informe avant d'ouvrir quoi que ce soit." },
-        { q: "Que couvre la garantie de 90 jours ?", a: "La garantie écrite couvre les pièces installées et la main-d'œuvre pendant 90 jours. Elle ne couvre pas les nouveaux dommages physiques ou les dégâts d'eau survenus après la réparation." },
+        { q: "Que couvre la garantie de 90 jours ?", a: "La garantie écrite couvre les pièces installées et la main-d'œuvre pendant 90 jours. Elle ne couvre pas les nouveaux dommages physiques. Important : tout dégât d'eau (avant ou après la réparation) annule la garantie — la corrosion peut continuer à endommager des composants des semaines plus tard, ce qui rend impossible de garantir le travail effectué." },
       ],
     },
     form: {
@@ -270,7 +270,7 @@ export const translations: Record<Lang, Dict> = {
         { q: "Will I lose my data?", a: "No. A screen or battery repair doesn't touch your data. We let you know in advance if any work carries a risk." },
         { q: "What are your prices?", a: "Screens from $109, batteries from $79. For other repairs we give a free estimate. Price is firm before we start." },
         { q: "Is the diagnostic always free?", a: "The visual and functional diagnostic is free. If the device has to be opened to identify the problem (water damage, internal failure, motherboard), a diagnostic fee applies. We tell you before opening anything." },
-        { q: "What does the 90-day warranty cover?", a: "The written warranty covers installed parts and labour for 90 days. It doesn't cover new physical damage or water damage that happens after the repair." },
+        { q: "What does the 90-day warranty cover?", a: "The written warranty covers installed parts and labour for 90 days. It doesn't cover new physical damage. Important: any water damage (before or after the repair) voids the warranty — corrosion can keep damaging components weeks later, which makes it impossible to guarantee the work performed." },
       ],
     },
     form: {
