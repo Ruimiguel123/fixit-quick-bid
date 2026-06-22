@@ -238,7 +238,7 @@ export const translations: Record<Lang, Dict> = {
     how: {
       title: "How it works",
       steps: [
-        { n: "1", t: "Free diagnostic", d: "Bring in your device. We assess the problem and give you a firm price before starting." },
+        { n: "1", t: "Free diagnostic", d: "Bring in your device. We assess the problem and give you a firm price before starting. Note: if the device has to be opened to diagnose the issue, a diagnostic fee applies." },
         { n: "2", t: "Same-day repair", d: "Screens and batteries in under an hour in most cases. Quality parts in stock." },
         { n: "3", t: "90-day warranty", d: "Written warranty on parts and labour. Any issue, bring the device back." },
       ],
