@@ -125,6 +125,7 @@ export const translations: Record<Lang, Dict> = {
         { q: "Faut-il prendre rendez-vous ?", a: "Non. Vous pouvez passer directement à l'atelier durant nos heures d'ouverture. Un appel à l'avance peut nous aider à confirmer que la pièce est en stock." },
         { q: "Vais-je perdre mes données ?", a: "Non. Une réparation d'écran ou de batterie ne touche pas à vos données. On vous prévient si une intervention présente un risque." },
         { q: "Quels sont vos prix ?", a: "Écrans dès 109 $, batteries dès 79 $. Pour les autres réparations, on donne une soumission gratuite. Le prix est ferme avant qu'on commence." },
+        { q: "Le diagnostic est-il toujours gratuit ?", a: "Le diagnostic visuel et fonctionnel est gratuit. Si l'appareil doit être ouvert pour identifier le problème (dégât d'eau, panne interne, carte mère), des frais de diagnostic s'appliquent. On vous en informe avant d'ouvrir quoi que ce soit." },
         { q: "Que couvre la garantie de 90 jours ?", a: "La garantie écrite couvre les pièces installées et la main-d'œuvre pendant 90 jours. Elle ne couvre pas les nouveaux dommages physiques ou les dégâts d'eau survenus après la réparation." },
       ],
     },
