@@ -135,6 +135,7 @@ function Header({ lang, t }: { lang: Lang; t: Dict }) {
             <span className="hidden sm:inline">{PHONE}</span>
             <span className="sm:hidden">{t.nav.call}</span>
           </a>
+          <ThemeToggle lang={lang} />
         </div>
       </div>
     </header>
