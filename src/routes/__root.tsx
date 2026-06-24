@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieConsent } from "../components/site/CookieConsent";
 import { LoadingScreen } from "../components/site/LoadingScreen";
 import { TrackingScripts } from "../components/site/TrackingScripts";
+import { CookieWidget } from "../components/site/CookieWidget";
 
 function NotFoundComponent() {
   return (
@@ -152,6 +153,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <CookieConsent />
+      <CookieWidget />
       <LoadingScreen />
       <TrackingScripts />
     </QueryClientProvider>
