@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieConsent } from "../components/site/CookieConsent";
 import { LoadingScreen } from "../components/site/LoadingScreen";
 import { TrackingScripts } from "../components/site/TrackingScripts";
+import { CookieWidget } from "../components/site/CookieWidget";
 
 function NotFoundComponent() {
   return (
