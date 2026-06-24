@@ -41,6 +41,9 @@ export function CookieConsent() {
     } catch {
       setVisible(true);
     }
+    const onOpen = () => setVisible(true);
+    window.addEventListener("de-open-cookie-consent", onOpen);
+    return () => window.removeEventListener("de-open-cookie-consent", onOpen);
   }, []);
 
   const decide = (value: "all" | "rejected") => {
