@@ -709,7 +709,7 @@ function Footer({ t }: { t: Dict }) {
             }}
             className="inline-flex items-center gap-2 hover:text-brand"
           >
-            {t.footer.cookiePrefs ?? (t.footer.rights?.startsWith("Tous") ? "Préférences cookies" : "Cookie preferences")}
+            {t.footer.rights?.startsWith("Tous") ? "Préférences cookies" : "Cookie preferences"}
           </button>
         </div>
 
