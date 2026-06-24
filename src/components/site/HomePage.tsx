@@ -699,6 +699,18 @@ function Footer({ t }: { t: Dict }) {
           <a href={IG} target="_blank" rel="noopener" aria-label="Instagram" className="inline-flex items-center gap-2 hover:text-brand">
             <Instagram size={14} /> Instagram
           </a>
+          <button
+            type="button"
+            onClick={() => {
+              try {
+                localStorage.removeItem("de-cookie-consent");
+                window.dispatchEvent(new CustomEvent("de-open-cookie-consent"));
+              } catch {}
+            }}
+            className="inline-flex items-center gap-2 hover:text-brand"
+          >
+            {t.footer.rights?.startsWith("Tous") ? "Préférences cookies" : "Cookie preferences"}
+          </button>
         </div>
 
         <p className="font-mono text-[11px] uppercase tracking-wider text-graphite-foreground/50">
