@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieConsent } from "../components/site/CookieConsent";
 import { LoadingScreen } from "../components/site/LoadingScreen";
+import { TrackingScripts } from "../components/site/TrackingScripts";
 
 function NotFoundComponent() {
   return (
@@ -152,6 +153,7 @@ function RootComponent() {
       <Outlet />
       <CookieConsent />
       <LoadingScreen />
+      <TrackingScripts />
     </QueryClientProvider>
   );
 }

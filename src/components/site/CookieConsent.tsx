@@ -50,6 +50,9 @@ export function CookieConsent() {
         JSON.stringify({ value, ts: Date.now() })
       );
     } catch {}
+    try {
+      window.dispatchEvent(new CustomEvent("de-consent-change", { detail: { value } }));
+    } catch {}
     setVisible(false);
   };
 
