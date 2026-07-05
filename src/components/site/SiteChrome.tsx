@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import { Phone, Facebook, Instagram } from "lucide-react";
-import type { Lang } from "@/lib/i18n";
+import { translations, type Lang } from "@/lib/i18n";
 import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
 import { SERVICES, SERVICE_ORDER } from "@/lib/services-data";
 import { OpenNowBadge } from "./OpenNowBadge";
