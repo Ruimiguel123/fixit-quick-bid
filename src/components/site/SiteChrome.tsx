@@ -123,6 +123,50 @@ export function SiteHeader({ lang }: Props) {
   );
 }
 
+export function SiteFooter({ lang }: Props) {
+  const t = translations[lang];
+  return (
+    <footer className="bg-graphite py-10 text-graphite-foreground">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 md:flex-row md:items-center md:justify-between md:px-6">
+        <div className="flex items-center gap-3">
+          <img
+            src={logoAsset.url}
+            alt="DigitalExpert.ca"
+            className="h-14 w-auto object-contain md:h-20"
+            width={1600}
+            height={392}
+            decoding="async"
+          />
+          <div>
+            <p className="font-display text-base font-extrabold">
+              DigitalExpert<span className="text-brand">.ca</span>
+            </p>
+            <p className="text-xs text-graphite-foreground/60">{t.footer.tagline}</p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4 text-sm">
+          <a href={TEL} className="inline-flex items-center gap-2 hover:text-brand">
+            <Phone size={14} /> {PHONE}
+          </a>
+          <a href={FB} target="_blank" rel="noopener" aria-label="Facebook" className="inline-flex items-center gap-2 hover:text-brand">
+            <Facebook size={14} /> {t.footer.facebook}
+          </a>
+          <a href={IG} target="_blank" rel="noopener" aria-label="Instagram" className="inline-flex items-center gap-2 hover:text-brand">
+            <Instagram size={14} /> Instagram
+          </a>
+        </div>
+
+        <p className="font-mono text-[11px] uppercase tracking-wider text-graphite-foreground/50">
+          © {new Date().getFullYear()} DigitalExpert.ca · {t.footer.rights}
+        </p>
+      </div>
+    </footer>
+  );
+}
+
+
+
 export function MobileCallBar({ lang }: Props) {
   const label = lang === "fr" ? "Appeler maintenant — 819-300-1718" : "Call now — 819-300-1718";
   return (
