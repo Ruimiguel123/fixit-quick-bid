@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import { Phone, Facebook, Instagram } from "lucide-react";
-import type { Lang } from "@/lib/i18n";
+import { translations, type Lang } from "@/lib/i18n";
 import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
 import { SERVICES, SERVICE_ORDER } from "@/lib/services-data";
 import { OpenNowBadge } from "./OpenNowBadge";
@@ -15,24 +16,38 @@ interface Props {
 }
 
 export function SiteHeader({ lang }: Props) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const homeHref = lang === "fr" ? "/" : "/en";
   const otherLangHref = lang === "fr" ? "/en" : "/";
   const requestHref = lang === "fr" ? "/demande-reparation" : "/en/repair-request";
+  const t = translations[lang];
   const labels = lang === "fr"
-    ? { home: "Accueil", services: "Services", request: "Demande", call: "Appeler" }
-    : { home: "Home", services: "Services", request: "Request", call: "Call" };
+    ? { home: "Accueil", services: "Services", request: "Demande", call: t.nav.call }
+    : { home: "Home", services: "Services", request: "Request", call: t.nav.call };
 
   return (
-    <header className="sticky top-0 z-50 bg-graphite text-graphite-foreground shadow-lg shadow-black/20">
+    <header
+      className={`sticky top-0 z-50 bg-graphite text-graphite-foreground transition-shadow ${
+        scrolled ? "shadow-lg shadow-black/20" : ""
+      }`}
+    >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2 md:px-6">
         <a href={homeHref} className="flex items-center">
           <img
             src={logoAsset.url}
             alt="DigitalExpert.ca"
-            className="h-14 w-auto object-contain md:h-16"
+            className="h-14 w-auto object-contain md:h-20"
             width={1600}
             height={392}
             decoding="async"
+            loading="eager"
           />
         </a>
 
@@ -60,10 +75,7 @@ export function SiteHeader({ lang }: Props) {
               })}
             </div>
           </div>
-          <a
-            href={requestHref}
-            className="text-sm text-graphite-foreground/80 hover:text-brand transition-colors"
-          >
+          <a href={requestHref} className="text-sm text-graphite-foreground/80 hover:text-brand transition-colors">
             {labels.request}
           </a>
         </nav>
@@ -87,13 +99,14 @@ export function SiteHeader({ lang }: Props) {
           >
             <Instagram size={18} />
           </a>
-          <ThemeToggle lang={lang} />
           <a
             href={otherLangHref}
             className="rounded-md border border-white/15 px-2 py-1.5 font-mono text-xs uppercase tracking-wider text-graphite-foreground/90 hover:border-brand hover:text-brand transition-colors"
             aria-label="Toggle language"
           >
-            {lang === "fr" ? "EN" : "FR"}
+            {lang === "fr" ? "🇫🇷 FR" : "🇬🇧 EN"}
+            <span className="text-graphite-foreground/40"> / </span>
+            <span className="text-graphite-foreground/40">{lang === "fr" ? "EN" : "FR"}</span>
           </a>
           <a
             href={TEL}
@@ -103,6 +116,7 @@ export function SiteHeader({ lang }: Props) {
             <span className="hidden sm:inline">{PHONE}</span>
             <span className="sm:hidden">{labels.call}</span>
           </a>
+          <ThemeToggle lang={lang} />
         </div>
       </div>
     </header>
@@ -110,21 +124,24 @@ export function SiteHeader({ lang }: Props) {
 }
 
 export function SiteFooter({ lang }: Props) {
-  const tagline = lang === "fr"
-    ? "Réparation cellulaire à Sherbrooke depuis 2016."
-    : "Cell phone repair in Sherbrooke since 2016.";
-  const rights = lang === "fr" ? "Tous droits réservés." : "All rights reserved.";
-
+  const t = translations[lang];
   return (
     <footer className="bg-graphite py-10 text-graphite-foreground">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 md:flex-row md:items-center md:justify-between md:px-6">
         <div className="flex items-center gap-3">
-          <img src={logoAsset.url} alt="DigitalExpert.ca" className="h-12 w-auto" width={1600} height={392} />
+          <img
+            src={logoAsset.url}
+            alt="DigitalExpert.ca"
+            className="h-14 w-auto object-contain md:h-20"
+            width={1600}
+            height={392}
+            decoding="async"
+          />
           <div>
             <p className="font-display text-base font-extrabold">
               DigitalExpert<span className="text-brand">.ca</span>
             </p>
-            <p className="text-xs text-graphite-foreground/60">{tagline}</p>
+            <p className="text-xs text-graphite-foreground/60">{t.footer.tagline}</p>
           </div>
         </div>
 
@@ -133,7 +150,7 @@ export function SiteFooter({ lang }: Props) {
             <Phone size={14} /> {PHONE}
           </a>
           <a href={FB} target="_blank" rel="noopener" aria-label="Facebook" className="inline-flex items-center gap-2 hover:text-brand">
-            <Facebook size={14} /> Facebook
+            <Facebook size={14} /> {t.footer.facebook}
           </a>
           <a href={IG} target="_blank" rel="noopener" aria-label="Instagram" className="inline-flex items-center gap-2 hover:text-brand">
             <Instagram size={14} /> Instagram
@@ -141,12 +158,14 @@ export function SiteFooter({ lang }: Props) {
         </div>
 
         <p className="font-mono text-[11px] uppercase tracking-wider text-graphite-foreground/50">
-          © {new Date().getFullYear()} DigitalExpert.ca · {rights}
+          © {new Date().getFullYear()} DigitalExpert.ca · {t.footer.rights}
         </p>
       </div>
     </footer>
   );
 }
+
+
 
 export function MobileCallBar({ lang }: Props) {
   const label = lang === "fr" ? "Appeler maintenant — 819-300-1718" : "Call now — 819-300-1718";
