@@ -13,9 +13,11 @@ const COPY = {
     subtitle: "On vous rappelle dans la journée avec un prix ferme.",
     name: "Nom",
     phone: "Téléphone",
+    email: "Courriel",
     device: "Appareil",
     devicePh: "iPhone 14, Galaxy S23…",
     problem: "Problème",
+    photo: "Photo (facultatif)",
     submit: "Envoyer",
     sent: "Demande envoyée. On vous rappelle bientôt.",
     or: "ou appelez",
@@ -27,9 +29,11 @@ const COPY = {
     subtitle: "We'll call you back today with a firm price.",
     name: "Name",
     phone: "Phone",
+    email: "Email",
     device: "Device",
     devicePh: "iPhone 14, Galaxy S23…",
     problem: "Problem",
+    photo: "Photo (optional)",
     submit: "Send",
     sent: "Request sent. We'll call you soon.",
     or: "or call",
@@ -84,6 +88,7 @@ export function RepairRequestWidget({ lang }: { lang: Lang }) {
           <form ref={formRef} onSubmit={onSubmit} className="space-y-3 p-4">
             <WField label={t.name} name="name" required />
             <WField label={t.phone} name="phone" type="tel" required />
+            <WField label={t.email} name="email" type="email" required />
             <WField label={t.device} name="device" placeholder={t.devicePh} required />
             <div>
               <label className="font-mono text-[10px] uppercase tracking-wider text-ash">
@@ -94,6 +99,17 @@ export function RepairRequestWidget({ lang }: { lang: Lang }) {
                 required
                 rows={3}
                 className="mt-1 w-full rounded-md border border-ink/15 bg-background px-2.5 py-2 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+              />
+            </div>
+            <div>
+              <label className="font-mono text-[10px] uppercase tracking-wider text-ash">
+                {t.photo}
+              </label>
+              <input
+                type="file"
+                name="photo"
+                accept="image/*"
+                className="mt-1 block w-full text-xs text-ink/70 file:mr-2 file:rounded-md file:border-0 file:bg-ink file:px-2.5 file:py-1.5 file:font-display file:text-[10px] file:font-bold file:text-paper hover:file:brightness-110"
               />
             </div>
             <button

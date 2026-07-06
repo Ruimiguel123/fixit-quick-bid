@@ -10,7 +10,7 @@ export interface Dict {
   about: { title: string; p1: string; p2: string; stats: { v: string; l: string }[]; photoAlt: string };
   reviews: { title: string; list: { q: string; a: string }[] };
   faq: { title: string; items: { q: string; a: string }[] };
-  form: { title: string; kicker: string; name: string; phone: string; device: string; problem: string; photo: string; submit: string; sent: string; required: string };
+  form: { title: string; kicker: string; name: string; phone: string; email: string; device: string; problem: string; photo: string; submit: string; sent: string; required: string };
   contact: { title: string; addressLabel: string; phoneLabel: string; hoursLabel: string; emailLabel: string; hours: { d: string; h: string }[] };
   footer: { tagline: string; rights: string; facebook: string };
   mobileBar: string;
@@ -134,6 +134,7 @@ export const translations: Record<Lang, Dict> = {
       kicker: "Préférez appeler ? 819-300-1718",
       name: "Nom",
       phone: "Téléphone",
+      email: "Courriel",
       device: "Modèle d'appareil",
       problem: "Description du problème",
       photo: "Photo du dommage (facultatif)",
@@ -278,6 +279,7 @@ export const translations: Record<Lang, Dict> = {
       kicker: "Prefer to call? 819-300-1718",
       name: "Name",
       phone: "Phone",
+      email: "Email",
       device: "Device model",
       problem: "Problem description",
       photo: "Damage photo (optional)",

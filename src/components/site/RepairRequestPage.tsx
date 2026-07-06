@@ -16,6 +16,7 @@ const COPY = {
     callKicker: "Vous préférez appeler ?",
     name: "Nom",
     phone: "Téléphone",
+    email: "Courriel",
     device: "Modèle d'appareil",
     devicePlaceholder: "iPhone 14, Galaxy S23…",
     problem: "Description du problème",
@@ -33,6 +34,7 @@ const COPY = {
     callKicker: "Prefer to call?",
     name: "Name",
     phone: "Phone",
+    email: "Email",
     device: "Device model",
     devicePlaceholder: "iPhone 14, Galaxy S23…",
     problem: "Problem description",
@@ -94,6 +96,7 @@ export function RepairRequestPage({ lang }: Props) {
             >
               <Field label={t.name} name="name" required />
               <Field label={t.phone} name="phone" type="tel" required />
+              <Field label={t.email} name="email" type="email" required />
               <Field label={t.device} name="device" placeholder={t.devicePlaceholder} required />
               <div>
                 <label className="font-mono text-[11px] uppercase tracking-wider text-ash">

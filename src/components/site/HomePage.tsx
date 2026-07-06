@@ -5,10 +5,10 @@ import {
   Star, Smartphone, Battery, Wrench, Camera, Unlock, ArrowRight,
 } from "lucide-react";
 import { translations, type Lang, type Dict } from "@/lib/i18n";
-const logoAsset = { url: "/assets/digitalexpert-logo-v3.png" };
+const logoAsset = { url: "/digitalexpert-logo-v3.png" };
 import { SERVICES, SERVICE_ORDER } from "@/lib/services-data";
-const samsungRepairAsset = { url: "/assets/samsung-screen-repair.jpg" };
-const iphoneRepairAsset = { url: "/assets/iphone-screen-repair.jpg" };
+const samsungRepairAsset = { url: "/samsung-screen-repair.jpg" };
+const iphoneRepairAsset = { url: "/iphone-screen-repair.jpg" };
 import { OpenNowBadge } from "./OpenNowBadge";
 import { ThemeToggle } from "./ThemeToggle";
 import { RepairRequestWidget } from "./RepairRequestWidget";
@@ -560,6 +560,7 @@ function RequestForm({ t, lang }: { t: Dict; lang: Lang }) {
         >
           <Field label={t.form.name} name="name" required />
           <Field label={t.form.phone} name="phone" type="tel" required />
+          <Field label={t.form.email} name="email" type="email" required />
           <Field label={t.form.device} name="device" placeholder="iPhone 14, Galaxy S23..." required />
           <div>
             <label className="font-mono text-[11px] uppercase tracking-wider text-ash">{t.form.problem}</label>
