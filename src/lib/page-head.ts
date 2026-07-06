@@ -2,14 +2,16 @@ import type { Lang } from "./i18n";
 import { SITE_URL, OG_IMAGE } from "./site-url";
 
 interface BuildHeadInput {
-  path: string;          // "/services/ecran-iphone"
-  title: string;         // <= 60 chars
-  description: string;   // 150-160 chars
+  path: string;            // "/services/ecran-iphone"
+  title: string;           // <= 60 chars
+  description: string;     // 150-160 chars
   lang: Lang;
-  jsonLd?: object;
+  /** Path of the same page in the other language, e.g. "/en/services/iphone-screen" */
+  alternatePath?: string;
+  jsonLd?: object | object[];
 }
 
-export function buildPageHead({ path, title, description, lang, jsonLd }: BuildHeadInput) {
+export function buildPageHead({ path, title, description, lang, alternatePath, jsonLd }: BuildHeadInput) {
   const url = `${SITE_URL}${path}`;
   const locale = lang === "fr" ? "fr_CA" : "en_CA";
 
@@ -26,10 +28,24 @@ export function buildPageHead({ path, title, description, lang, jsonLd }: BuildH
     { property: "og:image:height", content: "640" },
   ];
 
-  const links = [{ rel: "canonical", href: url }];
+  const links: { rel: string; href: string; hrefLang?: string }[] = [
+    { rel: "canonical", href: url },
+  ];
 
-  const scripts = jsonLd
-    ? [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }]
+  // hreflang pairs — French is the default language of the site (x-default).
+  if (alternatePath) {
+    const frPath = lang === "fr" ? path : alternatePath;
+    const enPath = lang === "en" ? path : alternatePath;
+    links.push(
+      { rel: "alternate", hrefLang: "fr-CA", href: `${SITE_URL}${frPath}` },
+      { rel: "alternate", hrefLang: "en-CA", href: `${SITE_URL}${enPath}` },
+      { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}${frPath}` },
+    );
+  }
+
+  const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const scripts = jsonLdArray.length
+    ? jsonLdArray.map((obj) => ({ type: "application/ld+json", children: JSON.stringify(obj) }))
     : undefined;
 
   return { meta, links, ...(scripts ? { scripts } : {}) };
@@ -57,5 +73,18 @@ export function serviceJsonLd(opts: { name: string; description: string; url: st
         addressCountry: "CA",
       },
     },
+  };
+}
+
+/** FAQPage rich-result markup. Feed it the same FAQ shown on the page. */
+export function faqJsonLd(items: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((it) => ({
+      "@type": "Question",
+      name: it.q,
+      acceptedAnswer: { "@type": "Answer", text: it.a },
+    })),
   };
 }

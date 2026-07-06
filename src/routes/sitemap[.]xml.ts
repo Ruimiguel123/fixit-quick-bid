@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "https://fixit-quick-bid.lovable.app";
+import { SITE_URL } from "@/lib/site-url";
+
+const BASE_URL = SITE_URL;
 
 interface SitemapEntry {
   path: string;
@@ -23,6 +25,8 @@ const ENTRIES: SitemapEntry[] = [
   { path: "/en/services/pixel", changefreq: "monthly", priority: "0.9" },
   { path: "/en/services/unlocking", changefreq: "monthly", priority: "0.9" },
   { path: "/demande-reparation", changefreq: "monthly", priority: "0.7" },
+  { path: "/politique-confidentialite", changefreq: "yearly", priority: "0.3" },
+  { path: "/en/privacy", changefreq: "yearly", priority: "0.3" },
   { path: "/en/repair-request", changefreq: "monthly", priority: "0.7" },
 ];
 

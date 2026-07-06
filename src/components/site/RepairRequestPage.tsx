@@ -3,6 +3,7 @@ import { Phone, MapPin, Clock, Mail } from "lucide-react";
 import type { Lang } from "@/lib/i18n";
 import { SiteHeader, SiteFooter, MobileCallBar } from "./SiteChrome";
 import { RepairRequestWidget } from "./RepairRequestWidget";
+import { submitRepairRequest, SUBMIT_COPY, type SubmitResult } from "@/lib/submit-request";
 
 const PHONE = "819-300-1718";
 const TEL = "tel:+18193001718";
@@ -50,21 +51,17 @@ interface Props {
 
 export function RepairRequestPage({ lang }: Props) {
   const t = COPY[lang];
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | SubmitResult>("idle");
   const formRef = useRef<HTMLFormElement>(null);
+  const sc = SUBMIT_COPY[lang];
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const subject = encodeURIComponent(
-      `${lang === "fr" ? "Demande de réparation" : "Repair request"} — ${fd.get("device") || ""}`
-    );
-    const body = encodeURIComponent(
-      `${lang === "fr" ? "Nom" : "Name"}: ${fd.get("name")}\n${lang === "fr" ? "Téléphone" : "Phone"}: ${fd.get("phone")}\n${lang === "fr" ? "Appareil" : "Device"}: ${fd.get("device")}\n\n${fd.get("problem")}`
-    );
-    window.location.href = `mailto:info@digitalexpert.ca?subject=${subject}&body=${body}`;
-    setSent(true);
-    formRef.current?.reset();
+    setStatus("sending");
+    const result = await submitRepairRequest(fd, lang);
+    setStatus(result);
+    if (result !== "error") formRef.current?.reset();
   };
 
   return (
@@ -122,11 +119,14 @@ export function RepairRequestPage({ lang }: Props) {
               </div>
               <button
                 type="submit"
-                className="mt-2 w-full rounded-md bg-brand px-5 py-3.5 font-display text-base font-bold text-brand-foreground hover:brightness-110 transition"
+                disabled={status === "sending"}
+                className="mt-2 w-full rounded-md bg-brand px-5 py-3.5 font-display text-base font-bold text-brand-foreground hover:brightness-110 transition disabled:opacity-60"
               >
-                {t.submit}
+                {status === "sending" ? sc.sending : t.submit}
               </button>
-              {sent && <p className="text-sm font-medium text-brand">{t.sent}</p>}
+              {status === "sent" && <p className="text-sm font-medium text-brand">{sc.sent}</p>}
+              {status === "mailto" && <p className="text-sm font-medium text-brand">{sc.mailto}</p>}
+              {status === "error" && <p className="text-sm font-medium text-destructive">{sc.error}</p>}
             </form>
           </div>
         </section>

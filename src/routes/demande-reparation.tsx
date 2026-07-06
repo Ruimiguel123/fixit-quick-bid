@@ -10,6 +10,7 @@ export const Route = createFileRoute("/demande-reparation")({
       description:
         "Faites une demande de réparation en ligne à Sherbrooke. On vous rappelle dans la journée avec un prix ferme. Soumission gratuite — appelez 819-300-1718.",
       lang: "fr",
+      alternatePath: "/en/repair-request",
     }),
   component: () => <RepairRequestPage lang="fr" />,
 });

@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage } from "@/components/site/ServicePage";
 import { SERVICES } from "@/lib/services-data";
-import { buildPageHead, serviceJsonLd } from "@/lib/page-head";
+import { buildPageHead, serviceJsonLd, faqJsonLd } from "@/lib/page-head";
 import { SITE_URL } from "@/lib/site-url";
 
-const S = SERVICES.samsung.fr;
+const S = SERVICES["samsung"].fr;
 const path = `/services/${S.slug}`;
+const alternatePath = `/en/services/${SERVICES["samsung"].en.slug}`;
 
 export const Route = createFileRoute("/services/samsung")({
   head: () =>
@@ -14,7 +15,11 @@ export const Route = createFileRoute("/services/samsung")({
       title: S.metaTitle,
       description: S.metaDescription,
       lang: "fr",
-      jsonLd: serviceJsonLd({ name: S.title, description: S.intro, url: `${SITE_URL}${path}`, lang: "fr" }),
+      alternatePath,
+      jsonLd: [
+        serviceJsonLd({ name: S.title, description: S.intro, url: `${SITE_URL}${path}`, lang: "fr" }),
+        faqJsonLd(S.faq),
+      ],
     }),
   component: () => <ServicePage lang="fr" service={S} />,
 });

@@ -72,7 +72,13 @@ export function CookieConsent() {
       <div className="rounded-xl border border-border bg-card text-card-foreground shadow-2xl p-4 md:p-5">
         <h2 className="font-display text-base font-bold">{t.title}</h2>
         <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-          {t.body}
+          {t.body}{" "}
+          <a
+            href={lang === "fr" ? "/politique-confidentialite" : "/en/privacy"}
+            className="underline hover:text-foreground"
+          >
+            {lang === "fr" ? "Politique de confidentialité" : "Privacy policy"}
+          </a>
         </p>
         <div className="mt-4 flex flex-wrap gap-2 justify-end">
           <button

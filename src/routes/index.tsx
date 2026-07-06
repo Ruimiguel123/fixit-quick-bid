@@ -10,6 +10,7 @@ export const Route = createFileRoute("/")({
       description:
         "Réparation cellulaire à Sherbrooke depuis 2016. Écrans iPhone dès 109 $, batteries dès 79 $. Garantie 90 jours. Soumission gratuite : 819-300-1718.",
       lang: "fr",
+      alternatePath: "/en",
     }),
   component: () => <HomePage lang="fr" />,
 });

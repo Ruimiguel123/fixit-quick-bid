@@ -10,6 +10,7 @@ export const Route = createFileRoute("/en/repair-request")({
       description:
         "Submit an online repair request in Sherbrooke. We'll call you back the same day with a firm price. Free estimate — call 819-300-1718 anytime.",
       lang: "en",
+      alternatePath: "/demande-reparation",
     }),
   component: () => <RepairRequestPage lang="en" />,
 });

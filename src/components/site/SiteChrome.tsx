@@ -158,7 +158,13 @@ export function SiteFooter({ lang }: Props) {
         </div>
 
         <p className="font-mono text-[11px] uppercase tracking-wider text-graphite-foreground/50">
-          © {new Date().getFullYear()} DigitalExpert.ca · {t.footer.rights}
+          © {new Date().getFullYear()} DigitalExpert.ca · {t.footer.rights} ·{" "}
+          <a
+            href={lang === "fr" ? "/politique-confidentialite" : "/en/privacy"}
+            className="underline hover:text-brand"
+          >
+            {lang === "fr" ? "Confidentialité" : "Privacy"}
+          </a>
         </p>
       </div>
     </footer>

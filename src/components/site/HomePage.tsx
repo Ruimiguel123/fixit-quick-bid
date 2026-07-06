@@ -12,6 +12,7 @@ import iphoneRepairAsset from "@/assets/iphone-screen-repair.jpg.asset.json";
 import { OpenNowBadge } from "./OpenNowBadge";
 import { ThemeToggle } from "./ThemeToggle";
 import { RepairRequestWidget } from "./RepairRequestWidget";
+import { submitRepairRequest, SUBMIT_COPY, type SubmitResult } from "@/lib/submit-request";
 
 const PHONE = "819-300-1718";
 const TEL = "tel:+18193001718";
@@ -57,7 +58,7 @@ export function HomePage({ lang }: { lang: Lang }) {
         <RequestForm t={t} lang={lang} />
         <Contact t={t} lang={lang} />
       </main>
-      <Footer t={t} />
+      <Footer t={t} lang={lang} />
       <MobileCallBar label={t.mobileBar} lang={lang} />
       <RepairRequestWidget lang={lang} />
     </div>
@@ -518,19 +519,17 @@ function Faq({ t }: { t: Dict }) {
 
 /* ---------- Request Form (anchor on home, full page at /demande-reparation) ---------- */
 function RequestForm({ t, lang }: { t: Dict; lang: Lang }) {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | SubmitResult>("idle");
   const formRef = useRef<HTMLFormElement>(null);
+  const sc = SUBMIT_COPY[lang];
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const subject = encodeURIComponent(`Demande de réparation — ${fd.get("device") || ""}`);
-    const body = encodeURIComponent(
-      `Nom / Name: ${fd.get("name")}\nTéléphone / Phone: ${fd.get("phone")}\nAppareil / Device: ${fd.get("device")}\n\n${fd.get("problem")}`
-    );
-    window.location.href = `mailto:info@digitalexpert.ca?subject=${subject}&body=${body}`;
-    setSent(true);
-    formRef.current?.reset();
+    setStatus("sending");
+    const result = await submitRepairRequest(fd, lang);
+    setStatus(result);
+    if (result !== "error") formRef.current?.reset();
   };
 
   const fullPageHref = lang === "fr" ? "/demande-reparation" : "/en/repair-request";
@@ -582,11 +581,14 @@ function RequestForm({ t, lang }: { t: Dict; lang: Lang }) {
           </div>
           <button
             type="submit"
-            className="mt-2 w-full rounded-md bg-brand px-5 py-3.5 font-display text-base font-bold text-brand-foreground hover:brightness-110 transition"
+            disabled={status === "sending"}
+            className="mt-2 w-full rounded-md bg-brand px-5 py-3.5 font-display text-base font-bold text-brand-foreground hover:brightness-110 transition disabled:opacity-60"
           >
-            {t.form.submit}
+            {status === "sending" ? sc.sending : t.form.submit}
           </button>
-          {sent && <p className="text-sm font-medium text-brand">{t.form.sent}</p>}
+          {status === "sent" && <p className="text-sm font-medium text-brand">{sc.sent}</p>}
+          {status === "mailto" && <p className="text-sm font-medium text-brand">{sc.mailto}</p>}
+          {status === "error" && <p className="text-sm font-medium text-destructive">{sc.error}</p>}
         </form>
       </div>
     </section>
@@ -675,7 +677,7 @@ function InfoBlock({ icon, label, children }: { icon: React.ReactNode; label: st
 }
 
 /* ---------- Footer ---------- */
-function Footer({ t }: { t: Dict }) {
+function Footer({ t, lang }: { t: Dict; lang: Lang }) {
   return (
     <footer className="bg-graphite py-10 text-graphite-foreground">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 md:flex-row md:items-center md:justify-between md:px-6">
@@ -702,7 +704,13 @@ function Footer({ t }: { t: Dict }) {
         </div>
 
         <p className="font-mono text-[11px] uppercase tracking-wider text-graphite-foreground/50">
-          © {new Date().getFullYear()} DigitalExpert.ca · {t.footer.rights}
+          © {new Date().getFullYear()} DigitalExpert.ca · {t.footer.rights} ·{" "}
+          <a
+            href={lang === "fr" ? "/politique-confidentialite" : "/en/privacy"}
+            className="underline hover:text-brand"
+          >
+            {lang === "fr" ? "Confidentialité" : "Privacy"}
+          </a>
         </p>
       </div>
     </footer>

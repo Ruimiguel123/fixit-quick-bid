@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fixit-quick-bid.lovable.app/sitemap.xml
+Sitemap: https://digitalexpert.ca/sitemap.xml

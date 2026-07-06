@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Wrench, X, Phone } from "lucide-react";
 import type { Lang } from "@/lib/i18n";
+import { submitRepairRequest, SUBMIT_COPY, type SubmitResult } from "@/lib/submit-request";
 
 const PHONE = "819-300-1718";
 const TEL = "tel:+18193001718";
@@ -39,7 +40,8 @@ const COPY = {
 export function RepairRequestWidget({ lang }: { lang: Lang }) {
   const t = COPY[lang];
   const [open, setOpen] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | SubmitResult>("idle");
+  const sc = SUBMIT_COPY[lang];
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
@@ -51,18 +53,13 @@ export function RepairRequestWidget({ lang }: { lang: Lang }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const subject = encodeURIComponent(
-      `${lang === "fr" ? "Demande de réparation" : "Repair request"} — ${fd.get("device") || ""}`,
-    );
-    const body = encodeURIComponent(
-      `${t.name}: ${fd.get("name")}\n${t.phone}: ${fd.get("phone")}\n${t.device}: ${fd.get("device")}\n\n${fd.get("problem")}`,
-    );
-    window.location.href = `mailto:info@digitalexpert.ca?subject=${subject}&body=${body}`;
-    setSent(true);
-    formRef.current?.reset();
+    setStatus("sending");
+    const result = await submitRepairRequest(fd, lang);
+    setStatus(result);
+    if (result !== "error") formRef.current?.reset();
   };
 
   return (
@@ -101,11 +98,14 @@ export function RepairRequestWidget({ lang }: { lang: Lang }) {
             </div>
             <button
               type="submit"
-              className="w-full rounded-md bg-brand px-4 py-2.5 font-display text-sm font-bold text-brand-foreground hover:brightness-110 transition"
+              disabled={status === "sending"}
+              className="w-full rounded-md bg-brand px-4 py-2.5 font-display text-sm font-bold text-brand-foreground hover:brightness-110 transition disabled:opacity-60"
             >
-              {t.submit}
+              {status === "sending" ? sc.sending : t.submit}
             </button>
-            {sent && <p className="text-xs font-medium text-brand">{t.sent}</p>}
+            {status === "sent" && <p className="text-xs font-medium text-brand">{sc.sent}</p>}
+            {status === "mailto" && <p className="text-xs font-medium text-brand">{sc.mailto}</p>}
+            {status === "error" && <p className="text-xs font-medium text-destructive">{sc.error}</p>}
             <p className="pt-1 text-center text-[11px] text-ink/60">
               {t.or}{" "}
               <a href={TEL} className="font-bold text-brand hover:underline">

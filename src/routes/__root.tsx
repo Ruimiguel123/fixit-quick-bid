@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -11,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SHOP_HOURS } from "../lib/hours";
+import { OG_IMAGE } from "../lib/site-url";
 import { CookieConsent } from "../components/site/CookieConsent";
 import { LoadingScreen } from "../components/site/LoadingScreen";
 import { TrackingScripts } from "../components/site/TrackingScripts";
@@ -101,7 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "MobilePhoneStore",
           name: "DigitalExpert.ca",
-          image: "https://digitalexpert.ca/og.jpg",
+          image: OG_IMAGE,
           telephone: "+1-819-300-1718",
           email: "info@digitalexpert.ca",
           priceRange: "$",
@@ -114,11 +117,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             addressCountry: "CA",
           },
           geo: { "@type": "GeoCoordinates", latitude: 45.3887776, longitude: -71.9101666 },
-          openingHoursSpecification: [
-            { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "10:00", closes: "18:00" },
-            { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "10:00", closes: "17:00" },
-          ],
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.7", reviewCount: "100" },
+          // Generated from SHOP_HOURS so schema, badge and displayed hours can never drift apart.
+          openingHoursSpecification: openingHoursFromShopHours(),
         }),
       },
     ],
@@ -129,10 +129,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+const DAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+function openingHoursFromShopHours() {
+  const two = (n: number) => String(n).padStart(2, "0");
+  return Object.entries(SHOP_HOURS)
+    .filter(([, slot]) => slot !== null)
+    .map(([day, slot]) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: DAY_NAMES[Number(day)],
+      opens: `${two(slot!.open)}:00`,
+      closes: `${two(slot!.close)}:00`,
+    }));
+}
+
 function RootShell({ children }: { children: ReactNode }) {
+  // French lives at the root, English under /en — set the SSR lang accordingly
+  // so search engines and screen readers get the right language without waiting for JS.
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const lang = pathname === "/en" || pathname.startsWith("/en/") ? "en" : "fr";
   const themeScript = `(function(){try{var t=localStorage.getItem('de-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>

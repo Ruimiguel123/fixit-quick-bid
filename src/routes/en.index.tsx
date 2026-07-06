@@ -10,6 +10,7 @@ export const Route = createFileRoute("/en/")({
       description:
         "Independent cell phone repair shop in Sherbrooke since 2016. iPhone screens from $109, batteries from $79. 90-day warranty. Free estimate: 819-300-1718.",
       lang: "en",
+      alternatePath: "/",
     }),
   component: () => <HomePage lang="en" />,
 });
