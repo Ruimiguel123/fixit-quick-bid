@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faith Kcreating — Makeup Studio | The Cube, Kisementi, Kampala</title>
+<meta name="description" content="Faith Kcreating is a professional makeup studio in Kampala. Bridal glam, event makeup, photoshoots and makeup classes at The Cube, Kisementi, Shop G18. Book on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cocoa:#231512;
+  --cocoa-soft:#31201b;
+  --espresso:#1a0f0c;
+  --gold:#c9982a;
+  --gold-bright:#e6b93f;
+  --blush:#d9a08a;
+  --ivory:#f7efe4;
+  --ivory-dim:#cbbfae;
+  --sw1:#5a3627; --sw2:#7c4a2d; --sw3:#a06a3f; --sw4:#c08d58; --sw5:#d9ab74; --sw6:#c9982a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cocoa);
+  color:var(--ivory);
+  font-family:'Jost',sans-serif;
+  font-weight:300;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold);color:var(--espresso)}
+
+/* ---------- shade swatch divider (signature) ---------- */
+.swatch-strip{display:flex;height:10px;width:100%}
+.swatch-strip span{flex:1}
+.swatch-strip span:nth-child(1){background:var(--sw1)}
+.swatch-strip span:nth-child(2){background:var(--sw2)}
+.swatch-strip span:nth-child(3){background:var(--sw3)}
+.swatch-strip span:nth-child(4){background:var(--sw4)}
+.swatch-strip span:nth-child(5){background:var(--sw5)}
+.swatch-strip span:nth-child(6){background:var(--sw6)}
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem clamp(1.2rem,4vw,3rem);
+  background:linear-gradient(to bottom, rgba(26,15,12,.92), rgba(26,15,12,0));
+  backdrop-filter:blur(2px);
+}
+.nav-logo{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;letter-spacing:.04em;color:var(--ivory);text-decoration:none}
+.nav-logo em{color:var(--gold);font-style:normal}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--ivory-dim);text-decoration:none;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;transition:color .25s}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--gold-bright)}
+.nav-book{
+  border:1px solid var(--gold);color:var(--gold-bright);
+  padding:.45rem 1.1rem;border-radius:999px;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;transition:background .25s,color .25s;
+}
+.nav-book:hover,.nav-book:focus-visible{background:var(--gold);color:var(--espresso)}
+@media(max-width:760px){.nav-links{display:none}}
+
+/* ---------- hero ---------- */
+header{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:7rem clamp(1.2rem,6vw,5rem) 4rem;
+  background:
+    radial-gradient(ellipse 60% 45% at 78% 22%, rgba(201,152,42,.16), transparent 65%),
+    radial-gradient(ellipse 45% 35% at 12% 85%, rgba(217,160,138,.10), transparent 70%),
+    var(--espresso);
+  position:relative;overflow:hidden;
+}
+.hero-eyebrow{
+  font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.4rem;
+}
+h1{
+  font-family:'Fraunces',serif;font-weight:300;
+  font-size:clamp(2.8rem,8.5vw,7rem);
+  line-height:1.02;letter-spacing:-.01em;max-width:14ch;
+}
+h1 .glam{font-style:italic;font-weight:400;color:var(--gold-bright)}
+.hero-sub{
+  margin-top:1.8rem;max-width:46ch;color:var(--ivory-dim);font-size:clamp(1rem,1.4vw,1.15rem);
+}
+.hero-ctas{display:flex;gap:1rem;margin-top:2.6rem;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.85rem 1.8rem;border-radius:999px;text-decoration:none;
+  font-weight:500;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;
+  transition:transform .2s,box-shadow .2s,background .2s;
+}
+.btn-gold{background:var(--gold);color:var(--espresso)}
+.btn-gold:hover,.btn-gold:focus-visible{background:var(--gold-bright);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,152,42,.35)}
+.btn-ghost{border:1px solid rgba(247,239,228,.3);color:var(--ivory)}
+.btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--gold);color:var(--gold-bright)}
+.hero-meta{
+  margin-top:4rem;display:flex;gap:2.5rem;flex-wrap:wrap;
+  font-size:.85rem;letter-spacing:.06em;color:var(--ivory-dim);
+}
+.hero-meta strong{display:block;color:var(--ivory);font-weight:500;font-size:.95rem;letter-spacing:.02em}
+
+/* fade-up on load */
+.fade{opacity:0;transform:translateY(18px);animation:fadeUp .9s ease forwards}
+.fade.d1{animation-delay:.1s}.fade.d2{animation-delay:.25s}.fade.d3{animation-delay:.4s}.fade.d4{animation-delay:.55s}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}}
+
+/* ---------- sections ---------- */
+section{padding:clamp(3.5rem,8vw,6.5rem) clamp(1.2rem,6vw,5rem)}
+.section-label{
+  font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;
+}
+h2{
+  font-family:'Fraunces',serif;font-weight:300;
+  font-size:clamp(1.9rem,4vw,3rem);line-height:1.1;margin-bottom:1.2rem;
+}
+h2 em{font-style:italic;color:var(--gold-bright);font-weight:400}
+.lede{color:var(--ivory-dim);max-width:58ch}
+
+/* services */
+#services{background:var(--cocoa)}
+.svc-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.2rem;margin-top:3rem;
+}
+.svc{
+  border:1px solid rgba(247,239,228,.1);border-radius:14px;
+  padding:1.8rem 1.6rem;background:var(--cocoa-soft);
+  position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s;
+}
+.svc::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--sw2),var(--sw4),var(--gold));
+  transform:scaleX(0);transform-origin:left;transition:transform .35s;
+}
+.svc:hover{border-color:rgba(201,152,42,.45);transform:translateY(-4px)}
+.svc:hover::before{transform:scaleX(1)}
+.svc h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.35rem;margin-bottom:.6rem}
+.svc p{color:var(--ivory-dim);font-size:.95rem}
+.svc .svc-note{margin-top:1rem;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+
+/* studio */
+#studio{background:var(--espresso)}
+.studio-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+@media(max-width:860px){.studio-wrap{grid-template-columns:1fr}}
+.studio-visual{
+  border-radius:16px;aspect-ratio:4/5;position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(230,185,63,.25), transparent 55%),
+    radial-gradient(circle at 75% 80%, rgba(217,160,138,.2), transparent 55%),
+    linear-gradient(160deg,#3a241c,#1a0f0c);
+  display:flex;align-items:flex-end;padding:1.4rem;
+  border:1px solid rgba(201,152,42,.25);
+}
+.studio-visual .ring{
+  position:absolute;top:14%;left:50%;transform:translateX(-50%);
+  width:58%;aspect-ratio:1;border-radius:50%;
+  border:2px solid rgba(230,185,63,.55);
+  box-shadow:0 0 60px rgba(230,185,63,.28), inset 0 0 60px rgba(230,185,63,.14);
+}
+.studio-visual figcaption{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ivory-dim)}
+.studio-list{list-style:none;margin-top:1.6rem;display:grid;gap:.9rem}
+.studio-list li{display:flex;gap:.8rem;align-items:baseline;color:var(--ivory-dim)}
+.studio-list li::before{content:"—";color:var(--gold)}
+
+/* about */
+#about{background:var(--cocoa)}
+.about-quote{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.3rem,2.6vw,1.9rem);line-height:1.4;color:var(--ivory);
+  max-width:34ch;margin-top:1.6rem;border-left:2px solid var(--gold);padding-left:1.4rem;
+}
+
+/* gallery */
+#work{background:var(--espresso)}
+.ig-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin-top:2.6rem}
+.ig-tile{
+  aspect-ratio:1;border-radius:10px;position:relative;overflow:hidden;
+  background:linear-gradient(150deg,var(--cocoa-soft),#241410);
+  border:1px solid rgba(247,239,228,.08);
+  display:flex;align-items:center;justify-content:center;
+}
+.ig-tile span{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,239,228,.35)}
+.ig-tile:nth-child(2){background:linear-gradient(150deg,#3a241c,#241410)}
+.ig-tile:nth-child(3){background:linear-gradient(150deg,#2c1a14,#3a241c)}
+.ig-tile:nth-child(4){background:linear-gradient(150deg,#241410,#31201b)}
+.ig-cta{margin-top:2rem}
+
+/* contact */
+#contact{background:var(--cocoa)}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-top:2.6rem}
+.contact-card{
+  border:1px solid rgba(247,239,228,.1);border-radius:14px;padding:1.6rem;
+  background:var(--cocoa-soft);
+}
+.contact-card h3{font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;font-weight:500}
+.contact-card p,.contact-card a{color:var(--ivory);font-size:1.05rem;text-decoration:none;word-break:break-word}
+.contact-card a:hover,.contact-card a:focus-visible{color:var(--gold-bright)}
+.contact-card small{display:block;margin-top:.4rem;color:var(--ivory-dim);font-size:.85rem}
+.hours{margin-top:2.2rem;color:var(--ivory-dim);font-size:.9rem}
+
+/* footer */
+footer{
+  background:var(--espresso);padding:2.2rem clamp(1.2rem,6vw,5rem);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  color:var(--ivory-dim);font-size:.85rem;
+}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{color:var(--gold-bright)}
+
+/* whatsapp float */
+.wa-float{
+  position:fixed;bottom:1.4rem;right:1.4rem;z-index:60;
+  width:56px;height:56px;border-radius:50%;
+  background:#25d366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .2s;
+}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#top">Faith <em>K</em>creating</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#studio">Studio</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-book" href="https://wa.me/256788492319?text=Hi%20Faith%2C%20I%27d%20like%20to%20book%20a%20makeup%20session." target="_blank" rel="noopener">Book now</a>
+</nav>
+
+<header id="top">
+  <p class="hero-eyebrow fade d1">Makeup Studio · The Cube, Kisementi · Kampala</p>
+  <h1 class="fade d2">Your face,<br>the <span class="glam">masterpiece</span>.</h1>
+  <p class="hero-sub fade d3">Faith Kcreating is a professional makeup studio in the heart of Kampala. Bridal glam, event looks, photoshoot-ready faces and hands-on makeup classes — all under one roof at The Cube, Kisementi.</p>
+  <div class="hero-ctas fade d4">
+    <a class="btn btn-gold" href="https://wa.me/256788492319?text=Hi%20Faith%2C%20I%27d%20like%20to%20book%20a%20makeup%20session." target="_blank" rel="noopener">Book on WhatsApp</a>
+    <a class="btn btn-ghost" href="#services">See services</a>
+  </div>
+  <div class="hero-meta fade d4">
+    <div><strong>Shop G18</strong>The Cube, Kisementi</div>
+    <div><strong>+256 788 492 319</strong>Call or WhatsApp</div>
+    <div><strong>@faith_kcreating</strong>Instagram</div>
+  </div>
+</header>
+
+<div class="swatch-strip" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<section id="services">
+  <p class="section-label reveal">Services</p>
+  <h2 class="reveal">Every occasion has <em>its look</em>.</h2>
+  <p class="lede reveal">From your wedding morning to a studio shoot, each session is tailored to your skin, your style and your moment.</p>
+  <div class="svc-grid">
+    <article class="svc reveal">
+      <h3>Bridal Glam</h3>
+      <p>Flawless, long-wear makeup for your big day. Includes a trial session so your wedding morning has zero surprises.</p>
+      <p class="svc-note">Trial included</p>
+    </article>
+    <article class="svc reveal">
+      <h3>Events &amp; Occasions</h3>
+      <p>Kwanjula, kukyala, birthdays, galas and nights out. Soft glam or full glam — camera-ready from every angle.</p>
+      <p class="svc-note">Soft or full glam</p>
+    </article>
+    <article class="svc reveal">
+      <h3>Photoshoots &amp; Media</h3>
+      <p>Editorial, content-creator and studio looks built for lighting and lenses. On-location or in-studio.</p>
+      <p class="svc-note">Studio or on location</p>
+    </article>
+    <article class="svc reveal">
+      <h3>Makeup Classes</h3>
+      <p>Learn to beat your own face or start your MUA journey. Personal one-on-one lessons and group masterclasses.</p>
+      <p class="svc-note">Beginner to pro</p>
+    </article>
+  </div>
+</section>
+
+<div class="swatch-strip" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<section id="studio">
+  <div class="studio-wrap">
+    <div>
+      <p class="section-label reveal">The Studio</p>
+      <h2 class="reveal">A glam room in the middle of <em>Kisementi</em>.</h2>
+      <p class="lede reveal">The studio sits inside The Cube, Shop G18 — easy to find, easy to park, minutes from Acacia Mall. Step in, sit down and let the transformation begin.</p>
+      <ul class="studio-list reveal">
+        <li>Professional lighting and mirror stations</li>
+        <li>Premium, skin-safe products for every skin tone</li>
+        <li>Comfortable private space for bridal parties</li>
+        <li>Home and venue call-outs available on request</li>
+      </ul>
+    </div>
+    <figure class="studio-visual reveal" role="img" aria-label="Stylized illustration of a lit makeup mirror">
+      <div class="ring" aria-hidden="true"></div>
+      <figcaption>Shop G18 · The Cube · Kisementi</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="swatch-strip" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<section id="about">
+  <p class="section-label reveal">About Faith</p>
+  <h2 class="reveal">Beauty is a craft. <em>I take it seriously.</em></h2>
+  <p class="lede reveal">Faith is the artist behind Faith Kcreating, one of Kampala's most talked-about makeup studios. Her signature: skin that still looks like skin, glam that photographs beautifully, and clients who leave feeling like the best version of themselves.</p>
+  <blockquote class="about-quote reveal">"My job isn't to change your face. It's to make sure the world sees it the way I do — stunning."</blockquote>
+</section>
+
+<div class="swatch-strip" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<section id="work">
+  <p class="section-label reveal">Recent Work</p>
+  <h2 class="reveal">The proof is on <em>Instagram</em>.</h2>
+  <p class="lede reveal">Fresh looks, client transformations and behind-the-scenes from the studio — posted daily.</p>
+  <div class="ig-grid reveal">
+    <div class="ig-tile"><span>Bridal</span></div>
+    <div class="ig-tile"><span>Soft glam</span></div>
+    <div class="ig-tile"><span>Editorial</span></div>
+    <div class="ig-tile"><span>Classes</span></div>
+  </div>
+  <p class="ig-cta reveal"><a class="btn btn-ghost" href="https://www.instagram.com/faith_kcreating/" target="_blank" rel="noopener">Follow @faith_kcreating</a></p>
+</section>
+
+<div class="swatch-strip" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<section id="contact">
+  <p class="section-label reveal">Contact</p>
+  <h2 class="reveal">Book your <em>seat in the chair</em>.</h2>
+  <p class="lede reveal">Dates fill up fast, especially wedding season. Send a WhatsApp message with your date and occasion to lock in your slot.</p>
+  <div class="contact-grid">
+    <div class="contact-card reveal">
+      <h3>Visit</h3>
+      <p>The Cube, Kisementi<br>Shop G18, Kampala</p>
+      <small>Near Acacia Mall</small>
+    </div>
+    <div class="contact-card reveal">
+      <h3>Call / WhatsApp</h3>
+      <p><a href="tel:+256788492319">+256 788 492 319</a></p>
+      <small><a href="https://wa.me/256788492319" target="_blank" rel="noopener">Message on WhatsApp →</a></small>
+    </div>
+    <div class="contact-card reveal">
+      <h3>Email</h3>
+      <p><a href="mailto:faithkcreating@gmail.com">faithkcreating@gmail.com</a></p>
+      <small>For classes &amp; collaborations</small>
+    </div>
+    <div class="contact-card reveal">
+      <h3>Instagram</h3>
+      <p><a href="https://www.instagram.com/faith_kcreating/" target="_blank" rel="noopener">@faith_kcreating</a></p>
+      <small>DMs open</small>
+    </div>
+  </div>
+</section>
+
+<div class="swatch-strip" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<footer>
+  <span>© <span id="yr"></span> Faith Kcreating · The Cube, Kisementi, Kampala</span>
+  <span><a href="https://wa.me/256788492319" target="_blank" rel="noopener">Book on WhatsApp</a></span>
+</footer>
+
+<a class="wa-float" href="https://wa.me/256788492319?text=Hi%20Faith%2C%20I%27d%20like%20to%20book%20a%20makeup%20session." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.7C8.7 2.7 2.8 8.6 2.8 15.9c0 2.6.8 5 2.1 7L2.7 29.3l6.6-2.1c1.9 1.1 4.2 1.7 6.6 1.7 7.3 0 13.2-5.9 13.2-13.2S23.3 2.7 16 2.7zm0 24c-2.2 0-4.2-.6-5.9-1.7l-.4-.3-3.9 1.2 1.3-3.8-.3-.4c-1.2-1.8-1.9-3.9-1.9-6.1C4.9 9.8 9.9 4.8 16 4.8s11.1 5 11.1 11.1-5 10.8-11.1 10.8zm6.1-8.1c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1.1-1 1.3-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.7-1.6-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6-.1-.2-.7-1.8-1-2.4-.3-.6-.5-.5-.7-.6h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
