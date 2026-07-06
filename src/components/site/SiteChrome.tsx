@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Phone, Facebook, Instagram } from "lucide-react";
 import { translations, type Lang } from "@/lib/i18n";
-import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
+const logoAsset = { url: "/assets/digitalexpert-logo-v3.png" };
 import { SERVICES, SERVICE_ORDER } from "@/lib/services-data";
 import { OpenNowBadge } from "./OpenNowBadge";
 import { ThemeToggle } from "./ThemeToggle";

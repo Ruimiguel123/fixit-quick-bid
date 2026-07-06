@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
-import logoAsset from "@/assets/digitalexpert-logo-transparent.png.asset.json";
+const logoAsset = { url: "/assets/digitalexpert-logo-transparent.png" };
 
 // One-time intro loader. Plays once per browser session.
 const STORAGE_KEY = "de-intro-played";

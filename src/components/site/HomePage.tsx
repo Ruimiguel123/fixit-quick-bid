@@ -5,10 +5,10 @@ import {
   Star, Smartphone, Battery, Wrench, Camera, Unlock, ArrowRight,
 } from "lucide-react";
 import { translations, type Lang, type Dict } from "@/lib/i18n";
-import logoAsset from "@/assets/digitalexpert-logo-v3.png.asset.json";
+const logoAsset = { url: "/assets/digitalexpert-logo-v3.png" };
 import { SERVICES, SERVICE_ORDER } from "@/lib/services-data";
-import samsungRepairAsset from "@/assets/samsung-screen-repair.jpg.asset.json";
-import iphoneRepairAsset from "@/assets/iphone-screen-repair.jpg.asset.json";
+const samsungRepairAsset = { url: "/assets/samsung-screen-repair.jpg" };
+const iphoneRepairAsset = { url: "/assets/iphone-screen-repair.jpg" };
 import { OpenNowBadge } from "./OpenNowBadge";
 import { ThemeToggle } from "./ThemeToggle";
 import { RepairRequestWidget } from "./RepairRequestWidget";
