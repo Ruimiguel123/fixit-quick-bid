@@ -9,7 +9,7 @@ import type { Lang } from "./i18n";
  * While this is empty, the form falls back to opening the visitor's mail app (mailto),
  * which silently loses leads on phones with no mail app configured — set it up early.
  */
-export const FORM_WEBHOOK_URL = "";
+export const FORM_WEBHOOK_URL = "https://hook.us2.make.com/7awo5dkqg3mc4e9kphxjzoyc9f5phzd6";
 
 export type SubmitResult = "sent" | "mailto" | "error";
 
