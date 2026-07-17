@@ -5,6 +5,9 @@ import { SITE_URL } from "@/lib/site-url";
 
 const BASE_URL = SITE_URL;
 
+/** Build date, stamped into every <lastmod>. Refreshes on each deploy. */
+const LASTMOD = new Date().toISOString().slice(0, 10);
+
 interface SitemapEntry {
   path: string;
   changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
@@ -19,11 +22,15 @@ const ENTRIES: SitemapEntry[] = [
   { path: "/services/samsung", changefreq: "monthly", priority: "0.9" },
   { path: "/services/pixel", changefreq: "monthly", priority: "0.9" },
   { path: "/services/deverrouillage", changefreq: "monthly", priority: "0.9" },
+  { path: "/services/port-de-charge", changefreq: "monthly", priority: "0.9" },
+  { path: "/services/degat-eau", changefreq: "monthly", priority: "0.9" },
   { path: "/en/services/iphone-screen", changefreq: "monthly", priority: "0.9" },
   { path: "/en/services/battery", changefreq: "monthly", priority: "0.9" },
   { path: "/en/services/samsung", changefreq: "monthly", priority: "0.9" },
   { path: "/en/services/pixel", changefreq: "monthly", priority: "0.9" },
   { path: "/en/services/unlocking", changefreq: "monthly", priority: "0.9" },
+  { path: "/en/services/charging-port", changefreq: "monthly", priority: "0.9" },
+  { path: "/en/services/water-damage", changefreq: "monthly", priority: "0.9" },
   { path: "/demande-reparation", changefreq: "monthly", priority: "0.7" },
   { path: "/politique-confidentialite", changefreq: "yearly", priority: "0.3" },
   { path: "/en/privacy", changefreq: "yearly", priority: "0.3" },
@@ -38,6 +45,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
+            `    <lastmod>${LASTMOD}</lastmod>`,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,

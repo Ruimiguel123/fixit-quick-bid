@@ -4,26 +4,26 @@ import { SERVICES } from "@/lib/services-data";
 import { buildPageHead, serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/page-head";
 import { SITE_URL } from "@/lib/site-url";
 
-const S = SERVICES["battery"].en;
-const path = `/en/services/${S.slug}`;
-const alternatePath = `/services/${SERVICES["battery"].fr.slug}`;
+const S = SERVICES["water-damage"].fr;
+const path = `/services/${S.slug}`;
+const alternatePath = `/en/services/${SERVICES["water-damage"].en.slug}`;
 
-export const Route = createFileRoute("/en/services/battery")({
+export const Route = createFileRoute("/services/degat-eau")({
   head: () =>
     buildPageHead({
       path,
       title: S.metaTitle,
       description: S.metaDescription,
-      lang: "en",
+      lang: "fr",
       alternatePath,
       jsonLd: [
-        serviceJsonLd({ name: S.title, description: S.intro, url: `${SITE_URL}${path}`, lang: "en" }),
+        serviceJsonLd({ name: S.title, description: S.intro, url: `${SITE_URL}${path}`, lang: "fr" }),
         faqJsonLd(S.faq),
         breadcrumbJsonLd([
-          { name: "Home", url: `${SITE_URL}/en` },
+          { name: "Accueil", url: `${SITE_URL}/` },
           { name: S.navLabel, url: `${SITE_URL}${path}` },
         ]),
       ],
     }),
-  component: () => <ServicePage lang="en" service={S} />,
+  component: () => <ServicePage lang="fr" service={S} />,
 });

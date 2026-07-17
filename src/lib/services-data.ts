@@ -1,6 +1,13 @@
 import type { Lang } from "./i18n";
 
-export type ServiceKey = "iphone-screen" | "battery" | "samsung" | "pixel" | "unlocking";
+export type ServiceKey =
+  | "iphone-screen"
+  | "battery"
+  | "samsung"
+  | "pixel"
+  | "unlocking"
+  | "charging-port"
+  | "water-damage";
 
 export interface ServiceContent {
   slug: string;            // url segment for this lang (e.g. "ecran-iphone")
@@ -267,9 +274,119 @@ export const SERVICES: Record<ServiceKey, Record<Lang, ServiceContent>> = {
         "Cell phone unlocking in Sherbrooke from $49: iPhone, Samsung, Pixel and more. Permanent, all carriers. Free estimate — call 819-300-1718 today.",
     },
   },
+  "charging-port": {
+    fr: {
+      slug: "port-de-charge",
+      navLabel: "Port de charge",
+      title: "Réparation port de charge à Sherbrooke",
+      eyebrow: "Port de charge",
+      intro:
+        "Le câble ne tient plus en place, la charge s'interrompt, ou l'appareil ne charge plus du tout. Dans bien des cas c'est de la poussière tassée au fond du port, pas une pièce brisée. On vérifie d'abord, on vous dit ce qu'on trouve, et on remplace le connecteur seulement si c'est vraiment nécessaire.",
+      priceFrom: "Soumission gratuite",
+      models: ["iPhone (tous modèles)", "Samsung Galaxy S / A / Note", "Google Pixel", "Motorola", "Ports Lightning", "Ports USB-C"],
+      bullets: [
+        "Diagnostic visuel gratuit — souvent c'est juste un nettoyage",
+        "Remplacement du connecteur seulement si la pièce est en cause",
+        "Prix ferme avant qu'on commence",
+        "Garantie écrite de 90 jours sur pièces et main-d'œuvre",
+      ],
+      faq: [
+        { q: "Mon téléphone ne charge plus, est-ce toujours le port ?", a: "Non. C'est souvent le câble, le bloc d'alimentation, ou de la poussière compactée dans le port. On teste ces possibilités avant de parler de remplacement." },
+        { q: "Combien coûte la réparation ?", a: "Ça dépend du modèle et de ce qu'on trouve. Le diagnostic visuel est gratuit et on vous donne un prix ferme avant de commencer." },
+        { q: "Combien de temps ça prend ?", a: "Un nettoyage se fait sur place en quelques minutes. Un remplacement de connecteur prend généralement la journée, selon le modèle et le stock de pièces." },
+      ],
+      metaTitle: "Réparation port de charge Sherbrooke | DigitalExpert",
+      metaDescription:
+        "Votre téléphone ne charge plus à Sherbrooke ? Souvent c'est juste un nettoyage, pas une réparation. Diagnostic gratuit, garantie 90 jours. 819-300-1718.",
+    },
+    en: {
+      slug: "charging-port",
+      navLabel: "Charging port",
+      title: "Charging Port Repair in Sherbrooke",
+      eyebrow: "Charging port",
+      intro:
+        "The cable won't stay in, charging cuts out, or the device won't charge at all. Often it's compacted lint at the bottom of the port, not a broken part. We check first, tell you what we find, and replace the connector only if it's genuinely needed.",
+      priceFrom: "Free estimate",
+      models: ["iPhone (all models)", "Samsung Galaxy S / A / Note", "Google Pixel", "Motorola", "Lightning ports", "USB-C ports"],
+      bullets: [
+        "Free visual diagnostic — often it's just a cleaning",
+        "Connector replaced only if the part is actually at fault",
+        "Firm price before we start",
+        "90-day written warranty on parts and labour",
+      ],
+      faq: [
+        { q: "My phone won't charge — is it always the port?", a: "No. It's often the cable, the power adapter, or lint packed into the port. We test those possibilities before talking about a replacement." },
+        { q: "How much does it cost?", a: "It depends on the model and what we find. The visual diagnostic is free and we give you a firm price before starting." },
+        { q: "How long does it take?", a: "A cleaning takes a few minutes on site. A connector replacement usually takes the day, depending on the model and parts availability." },
+      ],
+      metaTitle: "Charging Port Repair Sherbrooke | DigitalExpert",
+      metaDescription:
+        "Phone won't charge in Sherbrooke? Often it's just a cleaning, not a repair. Free diagnostic, 90-day warranty, firm price up front. Call 819-300-1718.",
+    },
+  },
+  "water-damage": {
+    fr: {
+      slug: "degat-eau",
+      navLabel: "Dégât d'eau",
+      title: "Réparation dégât d'eau à Sherbrooke",
+      eyebrow: "Dégât d'eau",
+      intro:
+        "Téléphone tombé dans l'eau, la toilette ou la piscine ? Le temps joue contre vous : la corrosion commence en quelques heures. Éteignez l'appareil, n'essayez pas de le charger, et apportez-le rapidement. On l'ouvre, on nettoie la carte, et on vous dit franchement s'il vaut la peine d'être sauvé.",
+      priceFrom: "Frais de diagnostic applicables",
+      models: ["iPhone", "Samsung Galaxy", "Google Pixel", "Autres marques", "Tablettes", "Eau douce, salée ou sucrée"],
+      bullets: [
+        "Apportez l'appareil au plus vite — la corrosion ne s'arrête pas toute seule",
+        "Ouverture, nettoyage de la carte et évaluation des dommages en atelier",
+        "Micro-soudure au besoin, via notre partenaire de confiance",
+        "Si l'appareil ne vaut pas la réparation, on vous le dit franchement",
+      ],
+      faq: [
+        { q: "Le riz, ça marche ?", a: "Non. Le riz ne retire pas l'eau déjà entrée dans l'appareil et vous fait perdre des heures précieuses pendant que la corrosion progresse. Éteignez l'appareil, ne le chargez pas, et apportez-le." },
+        { q: "Le diagnostic est-il gratuit ?", a: "Pas pour un dégât d'eau. L'appareil doit être ouvert pour évaluer les dommages, donc des frais de diagnostic s'appliquent. On vous en informe avant d'ouvrir quoi que ce soit." },
+        { q: "La réparation est-elle garantie ?", a: "Non. Tout dégât d'eau annule la garantie, avant comme après la réparation. La corrosion peut continuer à endommager des composants des semaines plus tard, ce qui rend impossible de garantir le travail. On préfère vous le dire d'avance." },
+        { q: "Mon appareil est-il récupérable ?", a: "Ça dépend du liquide, du temps écoulé et de si vous avez tenté de le charger. Impossible de le savoir sans ouvrir l'appareil. Si ça ne vaut pas la peine, on vous le dira plutôt que de vous facturer pour rien." },
+      ],
+      metaTitle: "Réparation dégât d'eau Sherbrooke | DigitalExpert",
+      metaDescription:
+        "Cellulaire tombé dans l'eau à Sherbrooke ? Agissez vite, la corrosion commence en quelques heures. Ne le chargez pas. Appelez le 819-300-1718.",
+    },
+    en: {
+      slug: "water-damage",
+      navLabel: "Water damage",
+      title: "Water Damage Repair in Sherbrooke",
+      eyebrow: "Water damage",
+      intro:
+        "Phone in the sink, the toilet or the pool? Time is working against you — corrosion starts within hours. Turn the device off, don't try to charge it, and bring it in fast. We open it, clean the board, and tell you honestly whether it's worth saving.",
+      priceFrom: "Diagnostic fee applies",
+      models: ["iPhone", "Samsung Galaxy", "Google Pixel", "Other brands", "Tablets", "Fresh, salt or sugary water"],
+      bullets: [
+        "Bring the device in fast — corrosion doesn't stop on its own",
+        "Opened, board cleaned and damage assessed in shop",
+        "Micro-soldering when needed, through our trusted partner",
+        "If the device isn't worth repairing, we tell you straight",
+      ],
+      faq: [
+        { q: "Does the rice trick work?", a: "No. Rice doesn't pull out water that's already inside the device, and it costs you precious hours while corrosion spreads. Turn the device off, don't charge it, and bring it in." },
+        { q: "Is the diagnostic free?", a: "Not for water damage. The device has to be opened to assess the damage, so a diagnostic fee applies. We tell you before we open anything." },
+        { q: "Is the repair covered by warranty?", a: "No. Any water damage voids the warranty, before or after the repair. Corrosion can keep damaging components weeks later, which makes the work impossible to guarantee. We'd rather tell you up front." },
+        { q: "Can my device be saved?", a: "It depends on the liquid, how much time has passed, and whether you tried to charge it. There's no way to know without opening it. If it isn't worth it, we'll say so rather than charge you for nothing." },
+      ],
+      metaTitle: "Water Damage Phone Repair Sherbrooke | DigitalExpert",
+      metaDescription:
+        "Phone dropped in water in Sherbrooke? Act fast — corrosion starts within hours. Don't charge it. Call 819-300-1718 for honest advice on your device.",
+    },
+  },
 };
 
-export const SERVICE_ORDER: ServiceKey[] = ["iphone-screen", "battery", "samsung", "pixel", "unlocking"];
+export const SERVICE_ORDER: ServiceKey[] = [
+  "iphone-screen",
+  "battery",
+  "samsung",
+  "pixel",
+  "unlocking",
+  "charging-port",
+  "water-damage",
+];
 
 export function getServiceByFrSlug(slug: string): ServiceContent | undefined {
   for (const key of SERVICE_ORDER) {

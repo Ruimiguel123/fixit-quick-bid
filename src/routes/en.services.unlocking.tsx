@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage } from "@/components/site/ServicePage";
 import { SERVICES } from "@/lib/services-data";
-import { buildPageHead, serviceJsonLd, faqJsonLd } from "@/lib/page-head";
+import { buildPageHead, serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/page-head";
 import { SITE_URL } from "@/lib/site-url";
 
 const S = SERVICES["unlocking"].en;
@@ -19,6 +19,10 @@ export const Route = createFileRoute("/en/services/unlocking")({
       jsonLd: [
         serviceJsonLd({ name: S.title, description: S.intro, url: `${SITE_URL}${path}`, lang: "en" }),
         faqJsonLd(S.faq),
+        breadcrumbJsonLd([
+          { name: "Home", url: `${SITE_URL}/en` },
+          { name: S.navLabel, url: `${SITE_URL}${path}` },
+        ]),
       ],
     }),
   component: () => <ServicePage lang="en" service={S} />,

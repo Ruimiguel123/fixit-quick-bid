@@ -89,6 +89,18 @@ export const translations: Record<Lang, Dict> = {
           desc: "Déverrouillage d'appareils, ports de charge, caméras, haut-parleurs, dégâts d'eau.",
           price: "Soumission gratuite",
         },
+        {
+          n: "06",
+          name: "Port de charge",
+          desc: "Le câble ne tient plus ou la charge coupe ? Souvent c'est juste un nettoyage. On vérifie gratuitement.",
+          price: "Soumission gratuite",
+        },
+        {
+          n: "07",
+          name: "Dégât d'eau",
+          desc: "Tombé dans l'eau ? Agissez vite. Nettoyage de carte et évaluation honnête en atelier.",
+          price: "Frais de diagnostic",
+        },
       ],
     },
     how: {
@@ -233,6 +245,18 @@ export const translations: Record<Lang, Dict> = {
           name: "Unlocking & more",
           desc: "Device unlocking, charging ports, cameras, speakers, water damage.",
           price: "Free estimate",
+        },
+        {
+          n: "06",
+          name: "Charging port",
+          desc: "Cable won't stay in or charging cuts out? Often it's just a cleaning. We check for free.",
+          price: "Free estimate",
+        },
+        {
+          n: "07",
+          name: "Water damage",
+          desc: "Dropped in water? Act fast. Board cleaning and an honest assessment in shop.",
+          price: "Diagnostic fee",
         },
       ],
     },

@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   Phone, MapPin, Clock, Mail, Facebook, Instagram, Check, ChevronDown,
-  Star, Smartphone, Battery, Wrench, Camera, Unlock, ArrowRight,
+  Star, Smartphone, Battery, Wrench, Camera, Unlock, ArrowRight, Plug, Droplets,
 } from "lucide-react";
 import { translations, type Lang, type Dict } from "@/lib/i18n";
 const logoAsset = { url: "/digitalexpert-logo-v3.png" };
@@ -268,7 +268,7 @@ function BrandsStrip({ label }: { label: string }) {
 }
 
 /* ---------- Services ---------- */
-const SERVICE_ICONS = [Smartphone, Battery, Wrench, Camera, Unlock];
+const SERVICE_ICONS = [Smartphone, Battery, Wrench, Camera, Unlock, Plug, Droplets];
 
 function Services({ t, lang }: { t: Dict; lang: Lang }) {
   return (
@@ -614,6 +614,77 @@ function Field({
 }
 
 /* ---------- Contact ---------- */
+/**
+ * Google's embed only loads after an explicit click. Two reasons:
+ *  1. The iframe sets Google cookies the moment it loads. Loading it unconditionally
+ *     would bypass the consent banner that gates GA4 and the Meta pixel, and contradict
+ *     the privacy policy. Click-to-load keeps the page cookie-free until the visitor asks.
+ *  2. If the embed ever fails to render, visitors still get the address and a working
+ *     Maps link instead of a blank grey box.
+ */
+const MAP_EMBED_URL =
+  "https://www.google.com/maps?q=1394+rue+Denault+Sherbrooke+QC&output=embed";
+const MAP_LINK_URL =
+  "https://www.google.com/maps/search/?api=1&query=1394+rue+Denault+Sherbrooke+QC+J1H+2P8";
+
+function MapCard({ lang }: { lang: Lang }) {
+  const [loaded, setLoaded] = useState(false);
+  const c =
+    lang === "fr"
+      ? {
+          show: "Afficher la carte",
+          note: "Carte fournie par Google. En l'affichant, Google peut déposer des témoins sur votre appareil.",
+          open: "Ouvrir dans Google Maps",
+          title: "Carte — 1394 rue Denault, Sherbrooke",
+        }
+      : {
+          show: "Show the map",
+          note: "Map provided by Google. Displaying it may let Google set cookies on your device.",
+          open: "Open in Google Maps",
+          title: "Map — 1394 rue Denault, Sherbrooke",
+        };
+
+  return (
+    <div className="reveal overflow-hidden rounded-md ring-1 ring-black/5 shadow-md">
+      {loaded ? (
+        <iframe
+          title={c.title}
+          src={MAP_EMBED_URL}
+          className="h-[420px] w-full border-0"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      ) : (
+        <div className="flex h-[420px] w-full flex-col items-center justify-center gap-4 bg-graphite px-6 text-center text-graphite-foreground">
+          <MapPin className="h-8 w-8 text-brand" aria-hidden="true" />
+          <div>
+            <p className="font-display text-base font-bold">1394 rue Denault</p>
+            <p className="text-sm text-graphite-foreground/70">Sherbrooke, Québec J1H 2P8</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setLoaded(true)}
+            className="rounded-md bg-brand px-5 py-2.5 font-display text-sm font-bold text-brand-foreground transition hover:brightness-110"
+          >
+            {c.show}
+          </button>
+          <p className="max-w-xs font-mono text-[10px] leading-relaxed text-graphite-foreground/50">
+            {c.note}
+          </p>
+          <a
+            href={MAP_LINK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[11px] uppercase tracking-wider text-brand underline underline-offset-4 hover:brightness-110"
+          >
+            {c.open}
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Contact({ t, lang }: { t: Dict; lang: Lang }) {
   return (
     <section id="contact" className="bg-background py-16 md:py-24">
@@ -648,15 +719,7 @@ function Contact({ t, lang }: { t: Dict; lang: Lang }) {
             </InfoBlock>
           </div>
 
-          <div className="reveal overflow-hidden rounded-md ring-1 ring-black/5 shadow-md">
-            <iframe
-              title="DigitalExpert.ca map"
-              src="https://www.google.com/maps?q=1394+rue+Denault+Sherbrooke+QC&output=embed"
-              className="h-[420px] w-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
+          <MapCard lang={lang} />
         </div>
       </div>
     </section>

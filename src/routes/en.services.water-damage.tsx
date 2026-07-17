@@ -4,11 +4,11 @@ import { SERVICES } from "@/lib/services-data";
 import { buildPageHead, serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/page-head";
 import { SITE_URL } from "@/lib/site-url";
 
-const S = SERVICES["battery"].en;
+const S = SERVICES["water-damage"].en;
 const path = `/en/services/${S.slug}`;
-const alternatePath = `/services/${SERVICES["battery"].fr.slug}`;
+const alternatePath = `/services/${SERVICES["water-damage"].fr.slug}`;
 
-export const Route = createFileRoute("/en/services/battery")({
+export const Route = createFileRoute("/en/services/water-damage")({
   head: () =>
     buildPageHead({
       path,
